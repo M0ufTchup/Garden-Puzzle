@@ -20,3 +20,7 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# IDE's caches
+.vs/
+.idea/
