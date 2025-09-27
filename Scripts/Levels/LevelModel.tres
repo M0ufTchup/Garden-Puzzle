@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LevelModel" load_steps=2 format=3 uid="uid://cx7klg7pnoqps"]
+
+[ext_resource type="Script" uid="uid://digh2d1n8du1l" path="res://Scripts/Levels/LevelModel.cs" id="1_hls84"]
+
+[resource]
+script = ExtResource("1_hls84")
+metadata/_custom_type_script = "uid://digh2d1n8du1l"

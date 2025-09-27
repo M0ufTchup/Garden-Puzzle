@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bliwxb70lpdxm"]
+[gd_scene load_steps=4 format=3 uid="uid://bliwxb70lpdxm"]
 
 [ext_resource type="Script" uid="uid://b43aar3jbx775" path="res://Scripts/GameGrid.cs" id="1_4xruw"]
 [ext_resource type="PackedScene" uid="uid://b168qskl7gllq" path="res://Scenes/cube.tscn" id="1_t33is"]
+[ext_resource type="PackedScene" uid="uid://7vqh265ffe4l" path="res://Scenes/LevelManager_Scene.tscn" id="3_5p0eq"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_4xruw")
@@ -12,3 +13,5 @@ transform = Transform3D(1, 0, 0, 0, 0.84394425, 0.53643084, 0, -0.53643084, 0.84
 [node name="Cube" parent="." instance=ExtResource("1_t33is")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42832, 0.5537064, 0.35493565)
 gravity_scale = 0.0
+
+[node name="LevelManager" parent="." instance=ExtResource("3_5p0eq")]

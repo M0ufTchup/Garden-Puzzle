@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://7vqh265ffe4l"]
+
+[ext_resource type="Script" uid="uid://c2e6f15uoro53" path="res://Scripts/Levels/LevelManager.cs" id="1_tbeqm"]
+[ext_resource type="Resource" uid="uid://cx7klg7pnoqps" path="res://Scripts/Levels/LevelModel.tres" id="2_ptskn"]
+
+[node name="LevelManager" type="Node3D" node_paths=PackedStringArray("_levelParent")]
+script = ExtResource("1_tbeqm")
+_levelModel = ExtResource("2_ptskn")
+_levelParent = NodePath(".")
+metadata/_custom_type_script = "uid://c2e6f15uoro53"
