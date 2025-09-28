@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://br3lacfi0ks4b"]
+
+[ext_resource type="Theme" uid="uid://dyahhdsytcfcq" path="res://Data/UITheme.tres" id="1_8x6yn"]
+[ext_resource type="Script" uid="uid://b5og6qrw32be6" path="res://Scripts/UI/LevelButton.cs" id="1_yrww3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8x6yn"]
+font_size = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8x6yn"]
+
+[node name="LevelButtonScene" type="Button" node_paths=PackedStringArray("_levelNameLabel")]
+custom_minimum_size = Vector2(100, 100)
+theme = ExtResource("1_8x6yn")
+script = ExtResource("1_yrww3")
+_levelNameLabel = NodePath("Label")
+metadata/_custom_type_script = "uid://b5og6qrw32be6"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -19.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "# Level Name"
+label_settings = SubResource("LabelSettings_8x6yn")
+horizontal_alignment = 1
+vertical_alignment = 2
+clip_text = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -44.0
+offset_right = -5.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_8x6yn")
+expand_mode = 2
+stretch_mode = 5

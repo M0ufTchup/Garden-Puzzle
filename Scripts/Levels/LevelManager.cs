@@ -32,6 +32,7 @@ public partial class LevelManager : Node3D
         levelInstance.Position = Vector3.Zero;
         
         LevelStarted?.Invoke(LevelData);
+        _levelModel.LevelStarted?.Invoke(LevelData);
     }
 
     public override void _EnterTree()
@@ -61,13 +62,21 @@ public partial class LevelManager : Node3D
 
     private void EndTurn()
     {
+        if (_levelModel.CurrentTurnIndex >= LevelData.TurnCount)
+            return;
+        
         // TODO: do real end turn logic
         _levelModel.Money += 10;
         
         // pass to next turn
-        _levelModel.CurrentTurnIndex++;
-        if (_levelModel.CurrentTurnIndex >= LevelData.TurnCount)
+        if (_levelModel.CurrentTurnIndex + 1 < LevelData.TurnCount)
+        {
+            _levelModel.CurrentTurnIndex++;
+        }
+        else
+        {
             EndLevel();
+        }
     }
 
     private void EndLevel()

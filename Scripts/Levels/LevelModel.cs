@@ -15,7 +15,8 @@ public partial class LevelModel : Resource
     [Export] public bool Won;
 
     public Action RequestTurnEnd;
-    
+
+    public Action<LevelData> LevelStarted;
     public Action<LevelData> LevelEnded;
 
     public void Reset(LevelData levelData)

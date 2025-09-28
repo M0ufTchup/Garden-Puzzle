@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://byy5fqkfhqekk"]
+
+[ext_resource type="Script" uid="uid://6uq50r1532vs" path="res://Scripts/UI/LevelSelectionUI.cs" id="1_bpf6m"]
+[ext_resource type="Resource" uid="uid://dbefslwyw60pv" path="res://Data/GameConfig.tres" id="2_1fgct"]
+[ext_resource type="PackedScene" uid="uid://br3lacfi0ks4b" path="res://Scenes/UI/LevelButtonScene.tscn" id="3_tv140"]
+
+[node name="LevelSelection" type="Control" node_paths=PackedStringArray("_levelButtonsContainer")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 270.0
+offset_bottom = 646.0
+script = ExtResource("1_bpf6m")
+_gameConfig = ExtResource("2_1fgct")
+_levelButtonsContainer = NodePath("GridContainer")
+_levelButtonScene = ExtResource("3_tv140")
+metadata/_custom_type_script = "uid://6uq50r1532vs"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5

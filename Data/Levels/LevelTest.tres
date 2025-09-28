@@ -4,20 +4,21 @@
 [ext_resource type="Script" uid="uid://bpjscgvhvjj58" path="res://Scripts/Levels/LevelTurnData.cs" id="2_6e4s6"]
 [ext_resource type="Script" uid="uid://b8h6ihtcodg8a" path="res://Scripts/Levels/LevelData.cs" id="3_255av"]
 
-[sub_resource type="Resource" id="Resource_uby3p"]
+[sub_resource type="Resource" id="Resource_iobyq"]
 script = ExtResource("2_6e4s6")
 
-[sub_resource type="Resource" id="Resource_c6bmm"]
+[sub_resource type="Resource" id="Resource_ic47u"]
 script = ExtResource("2_6e4s6")
 
-[sub_resource type="Resource" id="Resource_5x8te"]
+[sub_resource type="Resource" id="Resource_701qr"]
 script = ExtResource("2_6e4s6")
 
-[sub_resource type="Resource" id="Resource_ikkp8"]
+[sub_resource type="Resource" id="Resource_kljdg"]
 script = ExtResource("2_6e4s6")
 
 [resource]
 script = ExtResource("3_255av")
+Name = "Test Level"
 LevelScene = ExtResource("1_t8xbx")
-_turnsData = [SubResource("Resource_uby3p"), SubResource("Resource_c6bmm"), SubResource("Resource_5x8te"), SubResource("Resource_ikkp8")]
+_turnsData = [SubResource("Resource_iobyq"), SubResource("Resource_ic47u"), SubResource("Resource_701qr"), SubResource("Resource_kljdg")]
 metadata/_custom_type_script = "uid://b8h6ihtcodg8a"
