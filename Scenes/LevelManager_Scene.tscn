@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://7vqh265ffe4l"]
+[gd_scene load_steps=5 format=3 uid="uid://7vqh265ffe4l"]
 
 [ext_resource type="Script" uid="uid://c2e6f15uoro53" path="res://Scripts/Levels/LevelManager.cs" id="1_tbeqm"]
 [ext_resource type="Resource" uid="uid://cx7klg7pnoqps" path="res://Scripts/Levels/LevelModel.tres" id="2_ptskn"]
+[ext_resource type="Script" uid="uid://catt0ikh0rva1" path="res://Scripts/Plants/PlantManager.cs" id="3_cpho2"]
+[ext_resource type="PackedScene" uid="uid://dv02o5gv52q0r" path="res://Scenes/PlantScene.tscn" id="4_wwic3"]
 
 [node name="LevelManager" type="Node3D" node_paths=PackedStringArray("_levelParent")]
 script = ExtResource("1_tbeqm")
 _levelModel = ExtResource("2_ptskn")
 _levelParent = NodePath(".")
 metadata/_custom_type_script = "uid://c2e6f15uoro53"
+
+[node name="PlantManager" type="Node" parent="."]
+script = ExtResource("3_cpho2")
+_plantScene = ExtResource("4_wwic3")
+metadata/_custom_type_script = "uid://catt0ikh0rva1"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv02o5gv52q0r"]
+
+[ext_resource type="Script" uid="uid://m1adpkomeud4" path="res://Scripts/Plants/Plant.cs" id="1_ovpbw"]
+
+[node name="Plant" type="Node3D" node_paths=PackedStringArray("_meshInstance")]
+script = ExtResource("1_ovpbw")
+_meshInstance = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://m1adpkomeud4"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
