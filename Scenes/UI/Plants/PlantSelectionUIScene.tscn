@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqtikhmmr0541"]
+
+[ext_resource type="Script" uid="uid://b3lr8hi10n2ri" path="res://Scripts/UI/PlantSelectionUI.cs" id="1_fw56r"]
+[ext_resource type="Resource" uid="uid://cx7klg7pnoqps" path="res://Scripts/Levels/LevelModel.tres" id="2_ybi6f"]
+[ext_resource type="PackedScene" uid="uid://hullau5xui8h" path="res://Scenes/UI/Plants/PlantButtonScene.tscn" id="3_qptqj"]
+
+[node name="PlantSelection" type="Control" node_paths=PackedStringArray("_plantButtonsContainer")]
+custom_minimum_size = Vector2(128, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 646.0
+script = ExtResource("1_fw56r")
+_levelModel = ExtResource("2_ybi6f")
+_plantButtonsContainer = NodePath("VBoxContainer/GridContainer")
+_plantButtonScene = ExtResource("3_qptqj")
+metadata/_custom_type_script = "uid://b3lr8hi10n2ri"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16206557, 0.1620656, 0.16206557, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Plants"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 5

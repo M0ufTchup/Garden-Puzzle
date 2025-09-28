@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=8 format=3 uid="uid://d20qv5qae1mek"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://d20qv5qae1mek"]
 
+[ext_resource type="Resource" uid="uid://ce70no283ew5h" path="res://Data/Plants/PlantTest.tres" id="1_ic47u"]
 [ext_resource type="PackedScene" uid="uid://b3pws17qu0qdw" path="res://Scenes/Levels/LevelTest_Scene.tscn" id="1_t8xbx"]
 [ext_resource type="Script" uid="uid://bpjscgvhvjj58" path="res://Scripts/Levels/LevelTurnData.cs" id="2_6e4s6"]
 [ext_resource type="Script" uid="uid://b8h6ihtcodg8a" path="res://Scripts/Levels/LevelData.cs" id="3_255av"]
@@ -18,7 +19,7 @@ script = ExtResource("2_6e4s6")
 
 [resource]
 script = ExtResource("3_255av")
-Name = "Test Level"
 LevelScene = ExtResource("1_t8xbx")
+AllowedPlants = Array[Object]([ExtResource("1_ic47u")])
 _turnsData = [SubResource("Resource_iobyq"), SubResource("Resource_ic47u"), SubResource("Resource_701qr"), SubResource("Resource_kljdg")]
 metadata/_custom_type_script = "uid://b8h6ihtcodg8a"

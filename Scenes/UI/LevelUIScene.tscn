@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv1ygrh8y6ilv"]
+[gd_scene load_steps=7 format=3 uid="uid://bv1ygrh8y6ilv"]
 
 [ext_resource type="Script" uid="uid://8mmwiq1bmhjl" path="res://Scripts/UI/LevelUI.cs" id="1_00knt"]
 [ext_resource type="Resource" uid="uid://cx7klg7pnoqps" path="res://Scripts/Levels/LevelModel.tres" id="2_ejoya"]
 [ext_resource type="Theme" uid="uid://dyahhdsytcfcq" path="res://Data/UITheme.tres" id="3_kv83m"]
+[ext_resource type="PackedScene" uid="uid://dqtikhmmr0541" path="res://Scenes/UI/Plants/PlantSelectionUIScene.tscn" id="4_cbq8t"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xp2oy"]
 
@@ -41,6 +42,17 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_kv83m")
 text = "End turn"
+
+[node name="PlantSelection" parent="." instance=ExtResource("4_cbq8t")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -285.0
+offset_right = 305.0
+offset_bottom = 300.0
+grow_vertical = 2
 
 [node name="Turns" type="HBoxContainer" parent="."]
 layout_mode = 1

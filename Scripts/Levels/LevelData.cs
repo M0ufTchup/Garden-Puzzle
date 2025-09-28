@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GardenPuzzle.Plants;
 using Godot;
 
 namespace GardenPuzzle.Levels;
@@ -12,6 +13,7 @@ public partial class LevelData : Resource
 {
     [Export] public string Name = "New Level";
     [Export] public PackedScene LevelScene { get; private set; }
+    [Export] public Godot.Collections.Array<PlantData> AllowedPlants { get; private set; }
     public IReadOnlyList<LevelTurnData> TurnsData => _turnsData;
     public int TurnCount => TurnsData.Count;
 
