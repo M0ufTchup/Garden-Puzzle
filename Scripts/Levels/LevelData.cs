@@ -14,24 +14,6 @@ public partial class LevelData : Resource
     [Export] public string Name = "New Level";
     [Export] public PackedScene LevelScene { get; private set; }
     [Export] public Godot.Collections.Array<PlantData> AllowedPlants { get; private set; }
-    public IReadOnlyList<LevelTurnData> TurnsData => _turnsData;
+    [Export] public Godot.Collections.Array<LevelTurnData> TurnsData { get; private set; }
     public int TurnCount => TurnsData.Count;
-
-    [Export] private Godot.Collections.Array<LevelTurnData> _turnsData
-    {
-        get => _internalTurnsData;
-        set
-        {
-            _internalTurnsData = value;
-            if (Engine.IsEditorHint() && _internalTurnsData is not null && _internalTurnsData.Count > 0)
-            {
-                for (var i = 0; i < _internalTurnsData.Count; i++)
-                {
-                    if (_internalTurnsData[i] is null)
-                        _internalTurnsData[i] = new LevelTurnData();
-                }
-            }
-        }
-    }
-    private Godot.Collections.Array<LevelTurnData> _internalTurnsData;
 }
