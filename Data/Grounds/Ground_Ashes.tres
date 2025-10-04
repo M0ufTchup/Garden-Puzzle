@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GroundType" load_steps=2 format=3 uid="uid://cxnaobbottnr0"]
+
+[ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_jfxa3"]
+
+[resource]
+script = ExtResource("1_jfxa3")
+Name = "Ashes"
+DebugColor = Color(0.23183304, 0.042737633, 0.0064666914, 1)
+metadata/_custom_type_script = "uid://dmsnlpapk3qqq"

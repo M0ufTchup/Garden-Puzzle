@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GroundType" load_steps=2 format=3 uid="uid://cetmm7w81exbo"]
+
+[ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_jup38"]
+
+[resource]
+script = ExtResource("1_jup38")
+Name = "Watered Grass"
+DebugColor = Color(0.0530027, 0.45741677, 0.15406391, 1)
+metadata/_custom_type_script = "uid://dmsnlpapk3qqq"
