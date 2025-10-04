@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=5 format=3 uid="uid://ce70no283ew5h"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=6 format=3 uid="uid://ce70no283ew5h"]
 
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="1_22lxk"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_j2cy0"]
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="2_sy8cq"]
+[ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="3_sy8cq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j2cy0"]
 radius = 0.1
@@ -11,6 +12,7 @@ height = 0.5
 [resource]
 script = ExtResource("1_j2cy0")
 Name = "Test Plant"
+Family = ExtResource("3_sy8cq")
 AllowedGroundTypes = Array[Object]([ExtResource("1_22lxk"), ExtResource("2_sy8cq")])
 Mesh = SubResource("CapsuleMesh_j2cy0")
 metadata/_custom_type_script = "uid://vypd1ab6ntie"

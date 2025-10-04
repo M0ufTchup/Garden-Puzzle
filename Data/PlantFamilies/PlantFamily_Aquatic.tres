@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlantFamily" load_steps=2 format=3 uid="uid://bvkupoy8au7pf"]
+
+[ext_resource type="Script" uid="uid://bh7iqsk7b7j4l" path="res://Scripts/Plants/PlantFamily.cs" id="1_iek7v"]
+
+[resource]
+script = ExtResource("1_iek7v")
+Name = "Aquatic"
+DebugColor = Color(0, 0.76862746, 1, 1)
+metadata/_custom_type_script = "uid://bh7iqsk7b7j4l"
