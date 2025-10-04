@@ -1,4 +1,5 @@
 using System;
+using GardenPuzzle.Grid;
 using Godot;
 
 namespace GardenPuzzle.Levels;
@@ -11,6 +12,8 @@ public partial class LevelManager : Node3D
 {
     public Action<LevelData> LevelStarted;
     public Action<LevelData> LevelEnded;
+    
+    public IGrid Grid { get; private set; }
     
     [Export] private LevelModel _levelModel;
     [Export] private Node3D _levelParent;
@@ -25,7 +28,8 @@ public partial class LevelManager : Node3D
             GD.PrintErr("LevelData is null");
             return;
         }
-        _levelModel.Reset(levelData);
+        Grid = new DummyGrid(10, 10);
+        _levelModel.Reset(levelData, Grid);
 
         Node3D levelInstance = LevelData.LevelScene.Instantiate<Node3D>();
         _levelParent.AddChild(levelInstance);

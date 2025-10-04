@@ -1,4 +1,5 @@
 using System;
+using GardenPuzzle.Grid;
 using Godot;
 
 namespace GardenPuzzle.Levels;
@@ -10,6 +11,7 @@ namespace GardenPuzzle.Levels;
 public partial class LevelModel : Resource
 {
     [Export] public LevelData LevelData;
+    public IReadOnlyGrid Grid { get; private set; }
     [Export] public int Money;
     [Export] public int CurrentTurnIndex;
     [Export] public bool Won;
@@ -19,9 +21,10 @@ public partial class LevelModel : Resource
     public Action<LevelData> LevelStarted;
     public Action<LevelData> LevelEnded;
 
-    public void Reset(LevelData levelData)
+    public void Reset(LevelData levelData, IReadOnlyGrid grid)
     {
         LevelData = levelData;
+        Grid = grid;
         Money = 0;
         CurrentTurnIndex = 0;
         Won = false;
