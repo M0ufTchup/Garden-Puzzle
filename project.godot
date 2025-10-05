@@ -24,9 +24,12 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="GardenPuzzle"
+config/name_localized={
+"fr": "Puzzle de Jardin"
+}
 run/main_scene="uid://bliwxb70lpdxm"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dic5kktfs2e1e"
 
 [autoload]
 
