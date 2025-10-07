@@ -79,25 +79,25 @@ theme_override_constants/separation = 50
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "PLAY"
+text = "MENU_PLAY"
 
 [node name="Options_Button" type="Button" parent="Main_Buttons"]
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "OPTIONS"
+text = "MENU_OPTIONS"
 
 [node name="Titles_Button" type="Button" parent="Main_Buttons"]
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "TITLES"
+text = "MENU_TITLES"
 
 [node name="Quit_Button" type="Button" parent="Main_Buttons"]
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "QUIT"
+text = "MENU_QUIT"
 
 [node name="SAVES_UI" type="Panel" parent="."]
 visible = false
@@ -131,7 +131,7 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath("../SaveContainer/SaveElementContainer2/Panel/Save2_button")
 theme_override_font_sizes/font_size = 60
-text = "BACK"
+text = "MENU_BACK"
 
 [node name="SaveContainer" type="HBoxContainer" parent="SAVES_UI"]
 layout_mode = 1
@@ -165,7 +165,7 @@ offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "NEW GAME"
+text = "MENU_SAVE_NEW_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -205,16 +205,17 @@ alignment = 1
 [node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "10H 03M"
+text = "10 MENU_SAVE_HOURS_H 03 MENU_SAVE_MINUTES_M"
 horizontal_alignment = 2
 
 [node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 50
-text = "JARDIN
-DE GIGA NOOB"
+text = "TITLES_GARDEN_TITLE_01"
 horizontal_alignment = 2
+visible_characters = 50
+visible_ratio = 2.2727273
 
 [node name="Save1_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel"]
 layout_mode = 1
@@ -246,7 +247,7 @@ focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
 focus_next = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
 focus_previous = NodePath(".")
 theme_override_font_sizes/font_size = 35
-text = "DELETE"
+text = "MENU_SAVE_DELETE"
 
 [node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer/UnderSaveOptions"]
 layout_mode = 2
@@ -274,7 +275,7 @@ offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "NEW GAME"
+text = "MENU_SAVE_NEW_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -314,16 +315,17 @@ alignment = 1
 [node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "202H 25M"
+text = "202MENU_SAVE_HOURS_H 25MENU_SAVE_MINUTES_M"
 horizontal_alignment = 2
 
 [node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 50
-text = "JARDIN
-ROYAL"
+text = "TITLES_GARDEN_TITLE_02"
 horizontal_alignment = 2
+visible_characters = 50
+visible_ratio = 2.2727273
 
 [node name="Save2_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel"]
 layout_mode = 1
@@ -355,7 +357,7 @@ focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
 focus_next = NodePath("../../../SaveElementContainer3/UnderSaveOptions/Delete3")
 focus_previous = NodePath("../../../SaveElementContainer/UnderSaveOptions/Delete1")
 theme_override_font_sizes/font_size = 35
-text = "DELETE"
+text = "MENU_SAVE_DELETE"
 
 [node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer2/UnderSaveOptions"]
 layout_mode = 2
@@ -383,7 +385,7 @@ offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "NEW GAME"
+text = "MENU_SAVE_NEW_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -422,7 +424,7 @@ alignment = 1
 [node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "10H 03M"
+text = "10MENU_SAVE_HOURS_H 03MENU_SAVE_MINUTES_M"
 horizontal_alignment = 2
 
 [node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer"]
@@ -432,6 +434,8 @@ theme_override_font_sizes/font_size = 50
 text = "JARDIN
 DE GIGA NOOB"
 horizontal_alignment = 2
+visible_characters = 50
+visible_ratio = 2.631579
 
 [node name="Save3_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel"]
 layout_mode = 1
@@ -463,14 +467,13 @@ focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
 focus_next = NodePath(".")
 focus_previous = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
 theme_override_font_sizes/font_size = 35
-text = "DELETE"
+text = "MENU_SAVE_DELETE"
 
 [node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer3/UnderSaveOptions"]
 layout_mode = 2
 texture = ExtResource("2_q5oir")
 
 [node name="OPTIONS_UI" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -498,13 +501,13 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "OPTIONS"
+text = "MENU_OPTIONS"
 horizontal_alignment = 1
 
 [node name="Volume" type="Label" parent="OPTIONS_UI/OPTIONS"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "VOLUME"
+text = "MENU_OPTION_VOLUME"
 horizontal_alignment = 1
 
 [node name="MainVolumeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
@@ -515,7 +518,7 @@ theme_override_constants/separation = 80
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 50
-text = "MAIN VOLUME"
+text = "MENU_OPTION_MAIN_VOLUME"
 
 [node name="Main_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/MainVolumeContainer"]
 custom_minimum_size = Vector2(500, 50)
@@ -539,7 +542,7 @@ theme_override_constants/separation = 80
 [node name="MUSIC VOLUME" type="Label" parent="OPTIONS_UI/OPTIONS/MusicVolumeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "MUSIC VOLUME"
+text = "MENU_OPTION_MUSIC_VOLUME"
 
 [node name="Music_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/MusicVolumeContainer"]
 custom_minimum_size = Vector2(500, 50)
@@ -563,7 +566,7 @@ theme_override_constants/separation = 80
 [node name="SFX VOLUME" type="Label" parent="OPTIONS_UI/OPTIONS/SFXVolumeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "SFX VOLUME"
+text = "MENU_OPTION_SFX_VOLUME"
 
 [node name="SFX_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/SFXVolumeContainer"]
 custom_minimum_size = Vector2(500, 50)
@@ -583,7 +586,7 @@ value = 1.0
 [node name="Interface" type="Label" parent="OPTIONS_UI/OPTIONS"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "INTERFACE"
+text = "MENU_OPTION_INTERFACE"
 horizontal_alignment = 1
 
 [node name="WindowModeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
@@ -593,7 +596,7 @@ theme_override_constants/separation = 80
 [node name="WINDOW MODE" type="Label" parent="OPTIONS_UI/OPTIONS/WindowModeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "WINDOW MODE"
+text = "MENU_OPTION_WINDOW_MODE"
 
 [node name="WindowModeSelect" type="OptionButton" parent="OPTIONS_UI/OPTIONS/WindowModeContainer"]
 custom_minimum_size = Vector2(200, 50)
@@ -609,9 +612,9 @@ focus_previous = NodePath("../../SFXVolumeContainer/SFX_vol_Slider")
 theme_override_font_sizes/font_size = 50
 selected = 0
 item_count = 2
-popup/item_0/text = "FULLSCREEN"
+popup/item_0/text = "MENU_OPTION_FULLSCREEN"
 popup/item_0/id = 0
-popup/item_1/text = "WINDOWED"
+popup/item_1/text = "MENU_OPTION_WINDOWED"
 popup/item_1/id = 1
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
@@ -622,7 +625,7 @@ theme_override_constants/separation = 80
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "RESOLUTION"
+text = "MENU_OPTION_RESOLUTION"
 vertical_alignment = 1
 
 [node name="ResolutionOption" type="OptionButton" parent="OPTIONS_UI/OPTIONS/ResolutionContainer"]
@@ -639,13 +642,13 @@ focus_previous = NodePath("../../WindowModeContainer/WindowModeSelect")
 theme_override_font_sizes/font_size = 50
 selected = 0
 item_count = 4
-popup/item_0/text = "ULTRA"
+popup/item_0/text = "MENU_OPTION_RESOLUTION_ULTRA"
 popup/item_0/id = 0
-popup/item_1/text = "HIGH"
+popup/item_1/text = "MENU_OPTION_RESOLUTION_HIGH"
 popup/item_1/id = 1
-popup/item_2/text = "MEDIUM"
+popup/item_2/text = "MENU_OPTION_RESOLUTION_MEDIUM"
 popup/item_2/id = 2
-popup/item_3/text = "LOW"
+popup/item_3/text = "MENU_OPTION_RESOLUTION_LOW"
 popup/item_3/id = 3
 
 [node name="VsyncContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
@@ -655,7 +658,7 @@ theme_override_constants/separation = 80
 [node name="VSYNC" type="Label" parent="OPTIONS_UI/OPTIONS/VsyncContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "VSYNC"
+text = "MENU_OPTION_VSYNC"
 
 [node name="Vsync_check" type="CheckButton" parent="OPTIONS_UI/OPTIONS/VsyncContainer"]
 custom_minimum_size = Vector2(500, 50)
@@ -670,6 +673,28 @@ focus_next = NodePath("../../Reset_Button")
 focus_previous = NodePath("../../ResolutionContainer/ResolutionOption")
 button_pressed = true
 
+[node name="LanguageContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="VSYNC" type="Label" parent="OPTIONS_UI/OPTIONS/LanguageContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MENU_OPTION_LANGUAGE"
+
+[node name="Language_Button" type="Button" parent="OPTIONS_UI/OPTIONS/LanguageContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../ResolutionContainer/ResolutionOption")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Reset_Button")
+focus_next = NodePath("../../Reset_Button")
+focus_previous = NodePath("../../ResolutionContainer/ResolutionOption")
+theme_override_font_sizes/font_size = 50
+text = "LANGUAGE_EN"
+
 [node name="Reset_Button" type="Button" parent="OPTIONS_UI/OPTIONS"]
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
@@ -681,7 +706,7 @@ focus_neighbor_bottom = NodePath("../Options_Back_Button")
 focus_next = NodePath("../Options_Back_Button")
 focus_previous = NodePath("../VsyncContainer/Vsync_check")
 theme_override_font_sizes/font_size = 60
-text = "RESET"
+text = "MENU_OPTION_RESET"
 
 [node name="Options_Back_Button" type="Button" parent="OPTIONS_UI/OPTIONS"]
 custom_minimum_size = Vector2(500, 80)
@@ -694,7 +719,7 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath("../Reset_Button")
 theme_override_font_sizes/font_size = 60
-text = "BACK"
+text = "MENU_BACK"
 
 [node name="TITLES_UI" type="Panel" parent="."]
 visible = false
@@ -728,7 +753,7 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 theme_override_font_sizes/font_size = 60
-text = "BACK"
+text = "MENU_BACK"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -755,6 +780,7 @@ text = "TEST"
 [connection signal="item_selected" from="OPTIONS_UI/OPTIONS/WindowModeContainer/WindowModeSelect" to="." method="_on_window_mode_select_item_selected"]
 [connection signal="item_selected" from="OPTIONS_UI/OPTIONS/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_option_item_selected"]
 [connection signal="toggled" from="OPTIONS_UI/OPTIONS/VsyncContainer/Vsync_check" to="." method="_on_vsync_check_toggled"]
+[connection signal="button_down" from="OPTIONS_UI/OPTIONS/LanguageContainer/Language_Button" to="." method="_on_language_button_button_down"]
 [connection signal="button_down" from="OPTIONS_UI/OPTIONS/Reset_Button" to="." method="_on_reset_button_button_down"]
 [connection signal="button_down" from="OPTIONS_UI/OPTIONS/Options_Back_Button" to="." method="_on_options_back_button_button_down"]
 [connection signal="button_down" from="TITLES_UI/Titles_Back_Button" to="." method="_on_back_button_button_down"]
