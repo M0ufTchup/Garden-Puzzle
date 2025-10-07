@@ -10,4 +10,4 @@ class_name OptionDataResource
 #@export var resolution: float = 1.0
 @export var vsync_enabled: bool = true
 #@export var vsync = DisplayServer.VSYNC_ENABLED
-@export var language: String = "English"
+@export var language: int = 0

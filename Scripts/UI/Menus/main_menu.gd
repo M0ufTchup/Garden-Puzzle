@@ -2,6 +2,8 @@ extends Control
 
 var using_mouse: bool = false
 var ui_mode: String = "Main"
+var languages: Array[String] = ["en_US", "fr", "es", "de", "it", "pt", "ru", "el", "tr", "da", "no", "sv", "nl", "pl", "fi", "ja", "zh_cn", "zh_tw", "ko", "cs_CZ", "hu_HU", "ro_RO", "th_TH", "bg_BG", "he_IL", "ar", "bs_BA"]
+var lang_index:int = 0
 
 #Control node to hide menus
 @export_category("Menu Control Nodes")
@@ -47,10 +49,8 @@ var main_option_node_focus: Control
 @export_category("TESTS")
 @export var texture1: Texture
 @export var texture2: Texture
-var text1: String = "10H 03M"
-var text2: String = "200H 23M"
-var title1: String = "JARDIN\nDE GIGA NOOB"
-var title2: String = "JARDIN\nROYAL"
+var title1: String = "TITLES_GARDEN_TITLE_01"
+var title2: String = "TITLES_GARDEN_TITLE_02"
 
 func _ready():
 	#GET ALL VARIABLES FROM GLOBAL / UPDATE
@@ -102,6 +102,10 @@ func load_option_values():
 	window_mode_button.selected = SaveLoad.SaveFileData.OptionData.window_mode_index
 	resolution_button.selected = SaveLoad.SaveFileData.OptionData.resolution_index
 	vsync_checkbox.button_pressed = SaveLoad.SaveFileData.OptionData.vsync_enabled
+	
+	lang_index = SaveLoad.SaveFileData.OptionData.language
+	TranslationServer.set_locale(languages[lang_index])
+	
 	SaveLoad._save()
 
 #MAIN BUTTONS
@@ -174,6 +178,11 @@ func _on_options_back_button_button_down():
 	option_node_focus = main_option_node_focus
 	set_focus("Main")
 	SaveLoad._save()
+	
+func _on_language_button_button_down():
+	lang_index = (lang_index + 1) % languages.size()
+	TranslationServer.set_locale(languages[lang_index])
+	SaveLoad.SaveFileData.OptionData.language = lang_index
 
 #TITLES MENU
 
@@ -222,9 +231,9 @@ func update_save_UI():
 
 func _on_button_button_down():
 	SaveLoad.SaveFileData.SaveData1.BackgroundImage = texture1
-	SaveLoad.SaveFileData.SaveData1.HoursPlayed = text1
+	SaveLoad.SaveFileData.SaveData1.HoursPlayed = "10%s" % tr("MENU_SAVE_HOURS_H") + " 03%s" % tr("MENU_SAVE_MINUTES_M")
 	SaveLoad.SaveFileData.SaveData1.GardenTitle = title1
 	SaveLoad.SaveFileData.SaveData2.BackgroundImage = texture2
-	SaveLoad.SaveFileData.SaveData2.HoursPlayed = text2
+	SaveLoad.SaveFileData.SaveData2.HoursPlayed = "200%s" % tr("MENU_SAVE_HOURS_H") + " 32%s" % tr("MENU_SAVE_MINUTES_M")
 	SaveLoad.SaveFileData.SaveData2.GardenTitle = title2
 	update_save_UI()
