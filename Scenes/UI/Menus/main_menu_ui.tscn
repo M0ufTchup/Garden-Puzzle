@@ -1,0 +1,761 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc7xllstlu28i"]
+
+[ext_resource type="Script" uid="uid://b60p71vt361ay" path="res://Scripts/UI/Menus/main_menu.gd" id="1_ysp3c"]
+[ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="2_q5oir"]
+[ext_resource type="Texture2D" uid="uid://djt75w2h47ydy" path="res://Assets/2D/TestBackground.JPG" id="3_6pwxf"]
+[ext_resource type="Texture2D" uid="uid://5xa1306mn1n8" path="res://Assets/2D/TestBackground2.JPG" id="4_y7e7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5oir"]
+bg_color = Color(0.4221884, 0.18186256, 0.39783958, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pwxf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysp3c"]
+bg_color = Color(0.19215687, 0.3254902, 0.24313726, 1)
+
+[node name="Main_menu_UI" type="Control" node_paths=PackedStringArray("save_menu_node", "option_menu_node", "title_menu_node", "save_node_focus", "main_node_focus", "option_node_focus", "titles_node_focus", "background_node1", "time_text_node1", "title_text_node1", "background_node2", "time_text_node2", "title_text_node2", "background_node3", "time_text_node3", "title_text_node3", "main_volume_slider", "music_volume_slider", "sfx_volume_slider", "window_mode_button", "resolution_button", "vsync_checkbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ysp3c")
+save_menu_node = NodePath("SAVES_UI")
+option_menu_node = NodePath("OPTIONS_UI")
+title_menu_node = NodePath("TITLES_UI")
+save_node_focus = NodePath("SAVES_UI/SaveContainer/SaveElementContainer/Panel/Save1_button")
+main_node_focus = NodePath("Main_Buttons/Play_Button")
+option_node_focus = NodePath("OPTIONS_UI/OPTIONS/MainVolumeContainer/Main_vol_Slider")
+titles_node_focus = NodePath("TITLES_UI/Titles_Back_Button")
+background_node1 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer/Panel/BackGround")
+time_text_node1 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer/Time")
+title_text_node1 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer/Tittle")
+background_node2 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer2/Panel/BackGround")
+time_text_node2 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer/Time")
+title_text_node2 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer/Tittle")
+background_node3 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer3/Panel/BackGround")
+time_text_node3 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer/Time")
+title_text_node3 = NodePath("SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer/Tittle")
+main_volume_slider = NodePath("OPTIONS_UI/OPTIONS/MainVolumeContainer/Main_vol_Slider")
+music_volume_slider = NodePath("OPTIONS_UI/OPTIONS/MusicVolumeContainer/Music_vol_Slider")
+sfx_volume_slider = NodePath("OPTIONS_UI/OPTIONS/SFXVolumeContainer/SFX_vol_Slider")
+window_mode_button = NodePath("OPTIONS_UI/OPTIONS/WindowModeContainer/WindowModeSelect")
+resolution_button = NodePath("OPTIONS_UI/OPTIONS/ResolutionContainer/ResolutionOption")
+vsync_checkbox = NodePath("OPTIONS_UI/OPTIONS/VsyncContainer/Vsync_check")
+texture1 = ExtResource("3_6pwxf")
+texture2 = ExtResource("4_y7e7s")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -564.5
+offset_top = 59.0
+offset_right = 564.5
+offset_bottom = 338.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_q5oir")
+
+[node name="Main_Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -85.0
+offset_right = 250.0
+offset_bottom = 385.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Play_Button" type="Button" parent="Main_Buttons"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="Options_Button" type="Button" parent="Main_Buttons"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "OPTIONS"
+
+[node name="Titles_Button" type="Button" parent="Main_Buttons"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "TITLES"
+
+[node name="Quit_Button" type="Button" parent="Main_Buttons"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "QUIT"
+
+[node name="SAVES_UI" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5oir")
+
+[node name="Save_Back_Button" type="Button" parent="SAVES_UI"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -178.0
+offset_right = 250.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../SaveContainer/SaveElementContainer2/Panel/Save2_button")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../SaveContainer/SaveElementContainer2/Panel/Save2_button")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
+[node name="SaveContainer" type="HBoxContainer" parent="SAVES_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -100
+
+[node name="SaveElementContainer" type="VBoxContainer" parent="SAVES_UI/SaveContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="SAVES_UI/SaveContainer/SaveElementContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 2
+
+[node name="NewGameTittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackGround" type="Sprite2D" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel"]
+modulate = Color(0.40069774, 0.40069774, 0.40069768, 1)
+position = Vector2(252, 349)
+scale = Vector2(0.6740741, 0.6740741)
+texture = ExtResource("3_6pwxf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -233.67499
+offset_right = -18.0
+offset_bottom = -19.674438
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Save_Num" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 60
+text = "1."
+
+[node name="GridContainer" type="VBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10H 03M"
+horizontal_alignment = 2
+
+[node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 50
+text = "JARDIN
+DE GIGA NOOB"
+horizontal_alignment = 2
+
+[node name="Save1_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../../SaveElementContainer2/Panel/Save2_button")
+focus_neighbor_bottom = NodePath("../../UnderSaveOptions/Delete1")
+focus_next = NodePath("../../../SaveElementContainer2/Panel/Save2_button")
+focus_previous = NodePath(".")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6pwxf")
+
+[node name="UnderSaveOptions" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Delete1" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer/UnderSaveOptions"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Panel/Save1_button")
+focus_neighbor_right = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
+focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
+focus_next = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 35
+text = "DELETE"
+
+[node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer/UnderSaveOptions"]
+layout_mode = 2
+texture = ExtResource("2_q5oir")
+
+[node name="SaveElementContainer2" type="VBoxContainer" parent="SAVES_UI/SaveContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="SAVES_UI/SaveContainer/SaveElementContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 2
+
+[node name="NewGameTittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackGround" type="Sprite2D" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel"]
+modulate = Color(0.40069774, 0.40069774, 0.40069768, 1)
+position = Vector2(252, 349)
+scale = Vector2(0.6740741, 0.6740741)
+texture = ExtResource("4_y7e7s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -233.67499
+offset_right = -18.0
+offset_bottom = -19.674438
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Save_Num" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 60
+text = "2."
+
+[node name="GridContainer" type="VBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "202H 25M"
+horizontal_alignment = 2
+
+[node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 50
+text = "JARDIN
+ROYAL"
+horizontal_alignment = 2
+
+[node name="Save2_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../../../SaveElementContainer/Panel/Save1_button")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../../SaveElementContainer3/Panel/Save3_button")
+focus_neighbor_bottom = NodePath("../../UnderSaveOptions/Delete2")
+focus_next = NodePath("../../../SaveElementContainer3/Panel/Save3_button")
+focus_previous = NodePath("../../../SaveElementContainer/Panel/Save1_button")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6pwxf")
+
+[node name="UnderSaveOptions" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Delete2" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer2/UnderSaveOptions"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../SaveElementContainer/UnderSaveOptions/Delete1")
+focus_neighbor_top = NodePath("../../Panel/Save2_button")
+focus_neighbor_right = NodePath("../../../SaveElementContainer3/UnderSaveOptions/Delete3")
+focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
+focus_next = NodePath("../../../SaveElementContainer3/UnderSaveOptions/Delete3")
+focus_previous = NodePath("../../../SaveElementContainer/UnderSaveOptions/Delete1")
+theme_override_font_sizes/font_size = 35
+text = "DELETE"
+
+[node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer2/UnderSaveOptions"]
+layout_mode = 2
+texture = ExtResource("2_q5oir")
+
+[node name="SaveElementContainer3" type="VBoxContainer" parent="SAVES_UI/SaveContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="SAVES_UI/SaveContainer/SaveElementContainer3"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 2
+
+[node name="NewGameTittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackGround" type="Sprite2D" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel"]
+modulate = Color(0.40069774, 0.40069774, 0.40069768, 1)
+position = Vector2(252, 349)
+scale = Vector2(0.6740741, 0.6740741)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -233.67499
+offset_right = -18.0
+offset_bottom = -19.674438
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Save_Num" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 60
+text = "3."
+
+[node name="GridContainer" type="VBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Time" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10H 03M"
+horizontal_alignment = 2
+
+[node name="Tittle" type="Label" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 50
+text = "JARDIN
+DE GIGA NOOB"
+horizontal_alignment = 2
+
+[node name="Save3_button" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("../../../SaveElementContainer2/Panel/Save2_button")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../UnderSaveOptions/Delete3")
+focus_next = NodePath(".")
+focus_previous = NodePath("../../../SaveElementContainer2/Panel/Save2_button")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6pwxf")
+
+[node name="UnderSaveOptions" type="HBoxContainer" parent="SAVES_UI/SaveContainer/SaveElementContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Delete3" type="Button" parent="SAVES_UI/SaveContainer/SaveElementContainer3/UnderSaveOptions"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
+focus_neighbor_top = NodePath("../../Panel/Save3_button")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../Save_Back_Button")
+focus_next = NodePath(".")
+focus_previous = NodePath("../../../SaveElementContainer2/UnderSaveOptions/Delete2")
+theme_override_font_sizes/font_size = 35
+text = "DELETE"
+
+[node name="DeleteTexture" type="TextureRect" parent="SAVES_UI/SaveContainer/SaveElementContainer3/UnderSaveOptions"]
+layout_mode = 2
+texture = ExtResource("2_q5oir")
+
+[node name="OPTIONS_UI" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysp3c")
+
+[node name="OPTIONS" type="VBoxContainer" parent="OPTIONS_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = -514.0
+offset_right = 484.0
+offset_bottom = 514.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Options" type="Label" parent="OPTIONS_UI/OPTIONS"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="Volume" type="Label" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="MainVolumeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="MAIN VOLUME" type="Label" parent="OPTIONS_UI/OPTIONS/MainVolumeContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "MAIN VOLUME"
+
+[node name="Main_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/MainVolumeContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../MusicVolumeContainer/Music_vol_Slider")
+focus_next = NodePath("../../MusicVolumeContainer/Music_vol_Slider")
+focus_previous = NodePath(".")
+max_value = 1.0
+step = 0.05
+value = 0.6
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="MUSIC VOLUME" type="Label" parent="OPTIONS_UI/OPTIONS/MusicVolumeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MUSIC VOLUME"
+
+[node name="Music_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/MusicVolumeContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../MainVolumeContainer/Main_vol_Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../SFXVolumeContainer/SFX_vol_Slider")
+focus_next = NodePath("../../SFXVolumeContainer/SFX_vol_Slider")
+focus_previous = NodePath("../../MainVolumeContainer/Main_vol_Slider")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="SFX VOLUME" type="Label" parent="OPTIONS_UI/OPTIONS/SFXVolumeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SFX VOLUME"
+
+[node name="SFX_vol_Slider" type="HSlider" parent="OPTIONS_UI/OPTIONS/SFXVolumeContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../MusicVolumeContainer/Music_vol_Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../WindowModeContainer/WindowModeSelect")
+focus_next = NodePath("../../WindowModeContainer/WindowModeSelect")
+focus_previous = NodePath("../../MusicVolumeContainer/Music_vol_Slider")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Interface" type="Label" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "INTERFACE"
+horizontal_alignment = 1
+
+[node name="WindowModeContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="WINDOW MODE" type="Label" parent="OPTIONS_UI/OPTIONS/WindowModeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "WINDOW MODE"
+
+[node name="WindowModeSelect" type="OptionButton" parent="OPTIONS_UI/OPTIONS/WindowModeContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../SFXVolumeContainer/SFX_vol_Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../ResolutionContainer/ResolutionOption")
+focus_next = NodePath("../../ResolutionContainer/ResolutionOption")
+focus_previous = NodePath("../../SFXVolumeContainer/SFX_vol_Slider")
+theme_override_font_sizes/font_size = 50
+selected = 0
+item_count = 2
+popup/item_0/text = "FULLSCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="RESOLUTION" type="Label" parent="OPTIONS_UI/OPTIONS/ResolutionContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "RESOLUTION"
+vertical_alignment = 1
+
+[node name="ResolutionOption" type="OptionButton" parent="OPTIONS_UI/OPTIONS/ResolutionContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../WindowModeContainer/WindowModeSelect")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../VsyncContainer/Vsync_check")
+focus_next = NodePath("../../VsyncContainer/Vsync_check")
+focus_previous = NodePath("../../WindowModeContainer/WindowModeSelect")
+theme_override_font_sizes/font_size = 50
+selected = 0
+item_count = 4
+popup/item_0/text = "ULTRA"
+popup/item_0/id = 0
+popup/item_1/text = "HIGH"
+popup/item_1/id = 1
+popup/item_2/text = "MEDIUM"
+popup/item_2/id = 2
+popup/item_3/text = "LOW"
+popup/item_3/id = 3
+
+[node name="VsyncContainer" type="HBoxContainer" parent="OPTIONS_UI/OPTIONS"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="VSYNC" type="Label" parent="OPTIONS_UI/OPTIONS/VsyncContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "VSYNC"
+
+[node name="Vsync_check" type="CheckButton" parent="OPTIONS_UI/OPTIONS/VsyncContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../ResolutionContainer/ResolutionOption")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Reset_Button")
+focus_next = NodePath("../../Reset_Button")
+focus_previous = NodePath("../../ResolutionContainer/ResolutionOption")
+button_pressed = true
+
+[node name="Reset_Button" type="Button" parent="OPTIONS_UI/OPTIONS"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../VsyncContainer/Vsync_check")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Options_Back_Button")
+focus_next = NodePath("../Options_Back_Button")
+focus_previous = NodePath("../VsyncContainer/Vsync_check")
+theme_override_font_sizes/font_size = 60
+text = "RESET"
+
+[node name="Options_Back_Button" type="Button" parent="OPTIONS_UI/OPTIONS"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Reset_Button")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Reset_Button")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
+[node name="TITLES_UI" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5oir")
+
+[node name="Titles_Back_Button" type="Button" parent="TITLES_UI"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -178.0
+offset_right = 250.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 1027.0
+offset_right = 278.0
+offset_bottom = 1062.0
+text = "TEST"
+
+[connection signal="button_down" from="Main_Buttons/Play_Button" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="Main_Buttons/Options_Button" to="." method="_on_options_button_button_down"]
+[connection signal="button_down" from="Main_Buttons/Titles_Button" to="." method="_on_titles_button_button_down"]
+[connection signal="button_down" from="Main_Buttons/Quit_Button" to="." method="_on_quit_button_button_down"]
+[connection signal="button_down" from="SAVES_UI/Save_Back_Button" to="." method="_on_back_button_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer/Panel/Save1_button" to="." method="_on_save_1_button_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer/UnderSaveOptions/Delete1" to="." method="_on_delete_1_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer2/Panel/Save2_button" to="." method="_on_save_2_button_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer2/UnderSaveOptions/Delete2" to="." method="_on_delete_2_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer3/Panel/Save3_button" to="." method="_on_save_3_button_button_down"]
+[connection signal="button_down" from="SAVES_UI/SaveContainer/SaveElementContainer3/UnderSaveOptions/Delete3" to="." method="_on_delete_3_button_down"]
+[connection signal="value_changed" from="OPTIONS_UI/OPTIONS/MainVolumeContainer/Main_vol_Slider" to="." method="_on_main_vol_slider_value_changed"]
+[connection signal="value_changed" from="OPTIONS_UI/OPTIONS/MusicVolumeContainer/Music_vol_Slider" to="." method="_on_music_vol_slider_value_changed"]
+[connection signal="value_changed" from="OPTIONS_UI/OPTIONS/SFXVolumeContainer/SFX_vol_Slider" to="." method="_on_sfx_vol_slider_value_changed"]
+[connection signal="item_selected" from="OPTIONS_UI/OPTIONS/WindowModeContainer/WindowModeSelect" to="." method="_on_window_mode_select_item_selected"]
+[connection signal="item_selected" from="OPTIONS_UI/OPTIONS/ResolutionContainer/ResolutionOption" to="." method="_on_resolution_option_item_selected"]
+[connection signal="toggled" from="OPTIONS_UI/OPTIONS/VsyncContainer/Vsync_check" to="." method="_on_vsync_check_toggled"]
+[connection signal="button_down" from="OPTIONS_UI/OPTIONS/Reset_Button" to="." method="_on_reset_button_button_down"]
+[connection signal="button_down" from="OPTIONS_UI/OPTIONS/Options_Back_Button" to="." method="_on_options_back_button_button_down"]
+[connection signal="button_down" from="TITLES_UI/Titles_Back_Button" to="." method="_on_back_button_button_down"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
