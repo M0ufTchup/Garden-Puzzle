@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://11scssd52asy"]
+
+[ext_resource type="Script" uid="uid://bstvwbufe32bd" path="res://Scripts/Grid/WorldMousePointer.cs" id="1_m45gd"]
+
+[node name="WorldMousePointer" type="Node3D"]
+script = ExtResource("1_m45gd")

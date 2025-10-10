@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba3aiwdftp6lt"]
+
+[ext_resource type="Script" uid="uid://b43aar3jbx775" path="res://Scripts/Grid/GameGrid.cs" id="1_v8g61"]
+
+[node name="GameGrid" type="Node3D"]
+script = ExtResource("1_v8g61")
