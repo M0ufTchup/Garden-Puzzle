@@ -100,12 +100,15 @@ public partial class LevelManager : Node3D
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
         Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up);
         cell.SetPlant(spawnedPlant);
+        spawnedPlant.Cell = cell;
         GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
         OnPlantation(spawnedPlant, cell);
     }
 
     private void OnPlantation(Plant plant, ICell plantCell)
     {
+        plant.Data.TerraformingAction?.Apply(Grid, plantCell);
+
         _levelModel.SetMoney(_levelModel.Money + plant.Data.DefaultMoneyGain);
         
         if (_levelModel.Money <= 0)

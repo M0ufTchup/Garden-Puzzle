@@ -13,4 +13,5 @@ public partial class PlantData : Resource
     [Export] public int Cost { get; private set; } = 1;
     [Export] public Array<GroundType> AllowedGroundTypes { get; private set; }
     [Export] public int DefaultMoneyGain { get; private set; } = 0;
+    [Export] public TerraformingAction TerraformingAction { get; private set; }
 }
