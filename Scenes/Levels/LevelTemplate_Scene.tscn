@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://btwr6cn4jri63"]
+
+[ext_resource type="MeshLibrary" uid="uid://bprpfh706h1lm" path="res://Data/Grid/MapGridMeshLibrary.tres" id="1_obtxq"]
+[ext_resource type="Script" uid="uid://b43aar3jbx775" path="res://Scripts/Grid/GameGrid.cs" id="2_eu2nv"]
+[ext_resource type="Resource" uid="uid://cka36dfuvl0tm" path="res://Data/Grid/GameGridConfig.tres" id="3_8514b"]
+[ext_resource type="Script" uid="uid://nwh43kmreqmt" path="res://Scripts/GardenCamera.cs" id="4_a7l48"]
+
+[node name="LevelTestScene" type="GridMap"]
+mesh_library = ExtResource("1_obtxq")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 65535, 0, 65535, 0, 0, 0, 65535, 0, 0, 0, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 2, 0, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 65535, 65529, 0, 65535, 65530, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65533, 65535, 0, 65532, 65535, 0, 65531, 65535, 0, 65530, 65535, 0, 65529, 65535, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 65535, 5, 0, 65535, 6, 0, 0, 6, 0, 0, 5, 0, 0, 4, 0, 0, 3, 0, 0, 2, 0, 3, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 3, 0)
+}
+script = ExtResource("2_eu2nv")
+_config = ExtResource("3_8514b")
+metadata/_custom_type_script = "uid://b43aar3jbx775"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 9.252167, 10.17575)
+script = ExtResource("4_a7l48")
+metadata/_custom_type_script = "uid://nwh43kmreqmt"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70826405, 0.5777255, 0.4057035, -0.5583854, 0.1068375, 0.82267344, 0.4319351, -0.80920887, 0.39826262, 7.2376823, 6.832136, 0)
