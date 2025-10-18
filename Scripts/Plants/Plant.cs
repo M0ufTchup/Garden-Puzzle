@@ -1,4 +1,3 @@
-using GardenPuzzle.Grid;
 using Godot;
 
 namespace GardenPuzzle.Plants;
@@ -7,7 +6,6 @@ namespace GardenPuzzle.Plants;
 public partial class Plant : Node3D
 {
     public PlantData Data { get; private set; }
-    public ICell Cell { get; set; }
 
     [Export] private MeshInstance3D _meshInstance;
     

@@ -1,12 +1,17 @@
+using System;
 using System.Collections.Generic;
-using GardenPuzzle.Grid;
 using GardenPuzzle.Ground;
 using GardenPuzzle.Plants;
 using Godot;
 
+namespace GardenPuzzle.Grid;
+
 [GlobalClass]
 public partial class GameGrid : GridMap, IGrid
 {
+	public event Action<ICell> CellPlantChanged;
+	public event Action<ICell> CellGroundChanged;
+	
 	[Export] private GameGridConfig _config;
 
 	private readonly Dictionary<Vector2I, ICell> _cells = new();
@@ -69,6 +74,8 @@ public partial class GameGrid : GridMap, IGrid
 			Vector3I mapPosition = new Vector3I(cell.Position.X, 0, cell.Position.Y);
 			SetCellItem(mapPosition, groundMeshDefinition.MeshLibraryId);
 		}
+		
+		CellGroundChanged?.Invoke(cell);
 	}
 
 	public void SetCellPlant(ICell cell, Plant plant)
@@ -76,6 +83,6 @@ public partial class GameGrid : GridMap, IGrid
 		if (cell is null)
 			return;
 		cell.SetPlant(plant);
-		plant.Cell = cell;
+		CellPlantChanged?.Invoke(cell);
 	}
 }
