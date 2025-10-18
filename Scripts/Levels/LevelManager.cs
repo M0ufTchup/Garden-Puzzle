@@ -28,12 +28,13 @@ public partial class LevelManager : Node3D
             GD.PrintErr("LevelData is null");
             return;
         }
-        Grid = new DummyGrid(10, 10);
-        _levelModel.Reset(levelData, Grid);
-
-        Node3D levelInstance = LevelData.LevelScene.Instantiate<Node3D>();
+        
+        GameGrid levelInstance = levelData.LevelScene.Instantiate<GameGrid>();
         _levelParent.AddChild(levelInstance);
         levelInstance.Position = Vector3.Zero;
+
+        Grid = levelInstance;
+        _levelModel.Reset(levelData, Grid);
         
         LevelStarted?.Invoke(LevelData);
         _levelModel.LevelStarted?.Invoke(LevelData);

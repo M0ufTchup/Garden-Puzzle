@@ -4,11 +4,12 @@ using Godot;
 
 namespace GardenPuzzle.Grid;
 
-public class DummyCell : ICell
+public class Cell : ICell
 {
-    public DummyCell(Vector2I position)
+    public Cell(Vector2I position, GroundType groundType)
     {
         Position = position;
+        GroundType = groundType;
     }
 
     public Vector2I Position { get; }

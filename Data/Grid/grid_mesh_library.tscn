@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cychr1bn80x67"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v627k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8tvga"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1nrd"]
+albedo_color = Color(0.039215688, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tl254"]
+material = SubResource("StandardMaterial3D_c1nrd")
+
+[node name="GridMeshLibrary" type="Node3D"]
+
+[node name="DefaultGround" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("BoxMesh_v627k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DefaultGround"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DefaultGround/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8tvga")
+
+[node name="WaterGround" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+mesh = SubResource("BoxMesh_tl254")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WaterGround"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterGround/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8tvga")
