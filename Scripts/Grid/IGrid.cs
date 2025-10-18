@@ -1,3 +1,4 @@
+using System;
 using GardenPuzzle.Ground;
 using GardenPuzzle.Plants;
 using Godot;
@@ -6,6 +7,9 @@ namespace GardenPuzzle.Grid;
 
 public interface IGrid : IReadOnlyGrid
 {
+    public event Action<ICell> CellPlantChanged;
+    public event Action<ICell> CellGroundChanged;
+    
     ICell GetCell(Vector2I position);
     ICell GetCell(Vector3 worldPosition);
 

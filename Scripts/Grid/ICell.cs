@@ -1,10 +1,12 @@
 using GardenPuzzle.Ground;
 using GardenPuzzle.Plants;
+using Godot;
 
 namespace GardenPuzzle.Grid;
 
-public interface ICell : IReadOnlyCell
+public interface ICell
 {
-    internal void SetGroundType(GroundType groundType);
-    internal void SetPlant(Plant plant);
+    Vector2I Position { get; }
+    GroundType GroundType { get; }
+    Plant Plant { get; }
 }

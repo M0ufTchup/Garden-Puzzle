@@ -14,7 +14,7 @@ public partial class GameGrid : GridMap, IGrid
 	
 	[Export] private GameGridConfig _config;
 
-	private readonly Dictionary<Vector2I, ICell> _cells = new();
+	private readonly Dictionary<Vector2I, Cell> _cells = new();
 	
 	public override void _Ready()
 	{
@@ -49,7 +49,7 @@ public partial class GameGrid : GridMap, IGrid
 		GD.Print($"[GameGrid] GridMap initialized with {_cells.Count} cells.");
 	}
 
-	public IReadOnlyCell GetReadOnlyCell(Vector2I position) => GetCell(position);
+	public ICell GetReadOnlyCell(Vector2I position) => GetCell(position);
 	public ICell GetCell(Vector2I position) => _cells.GetValueOrDefault(position);
 	public ICell GetCell(Vector3 worldPosition)
 	{
@@ -65,24 +65,24 @@ public partial class GameGrid : GridMap, IGrid
 
 	public void SetCellGroundType(ICell cell, GroundType groundType)
 	{
-		if (cell is null)
+		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
-		cell.SetGroundType(groundType);
+		internalCell.SetGroundType(groundType);
 
 		if (_config.TryGetMeshDefinition(groundType, out GroundMeshDefinition groundMeshDefinition))
 		{
-			Vector3I mapPosition = new Vector3I(cell.Position.X, 0, cell.Position.Y);
+			Vector3I mapPosition = new Vector3I(internalCell.Position.X, 0, internalCell.Position.Y);
 			SetCellItem(mapPosition, groundMeshDefinition.MeshLibraryId);
 		}
 		
-		CellGroundChanged?.Invoke(cell);
+		CellGroundChanged?.Invoke(internalCell);
 	}
 
 	public void SetCellPlant(ICell cell, Plant plant)
 	{
-		if (cell is null)
+		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
-		cell.SetPlant(plant);
-		CellPlantChanged?.Invoke(cell);
+		internalCell.SetPlant(plant);
+		CellPlantChanged?.Invoke(internalCell);
 	}
 }
