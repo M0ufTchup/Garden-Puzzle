@@ -12,11 +12,13 @@ public partial class PlantButton : Button
     private PlantData _data;
 
     [Export] private Label _nameLabel;
+    [Export] private Label _costLabel;
     
     public PlantButton Init(PlantData plantData)
     {
         _data = plantData;
         _nameLabel.Text = plantData.Name;
+        _costLabel.Text = plantData.Cost.ToString();
         return this;
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hullau5xui8h"]
+[gd_scene load_steps=6 format=3 uid="uid://hullau5xui8h"]
 
 [ext_resource type="Theme" uid="uid://dyahhdsytcfcq" path="res://Data/UITheme.tres" id="1_8ikqu"]
 [ext_resource type="Script" uid="uid://dmbyiedplq8ff" path="res://Scripts/UI/PlantButton.cs" id="2_klk6y"]
@@ -8,16 +8,19 @@ font_size = 10
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8x6yn"]
 
-[node name="PlantButtonScene" type="Button" node_paths=PackedStringArray("_nameLabel")]
+[sub_resource type="LabelSettings" id="LabelSettings_klk6y"]
+
+[node name="PlantButtonScene" type="Button" node_paths=PackedStringArray("_nameLabel", "_costLabel")]
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
 theme = ExtResource("1_8ikqu")
 script = ExtResource("2_klk6y")
-_nameLabel = NodePath("Label")
+_nameLabel = NodePath("NameLabel")
+_costLabel = NodePath("CostLabel")
 metadata/_custom_type_script = "uid://dmbyiedplq8ff"
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -49,3 +52,18 @@ mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_8x6yn")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 28.0
+grow_horizontal = 0
+text = "X"
+label_settings = SubResource("LabelSettings_klk6y")
+horizontal_alignment = 2
+clip_text = true

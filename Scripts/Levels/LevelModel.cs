@@ -11,9 +11,11 @@ namespace GardenPuzzle.Levels;
 [GlobalClass]
 public partial class LevelModel : Resource
 {
+    public event Action MoneyChanged;
+    
     [Export] public LevelData LevelData;
     public IReadOnlyGrid Grid { get; private set; }
-    [Export] public int Money;
+    [Export] public int Money { get; private set; }
     [Export] public int CurrentTurnIndex;
     [Export] public bool Won;
     public PlantData SelectedPlantData;
@@ -27,9 +29,15 @@ public partial class LevelModel : Resource
     {
         LevelData = levelData;
         Grid = grid;
-        Money = 0;
+        Money = LevelData.StartMoney;
         CurrentTurnIndex = 0;
         Won = false;
         SelectedPlantData = null;
+    }
+
+    public void SetMoney(int newMoney)
+    {
+        Money = newMoney;
+        MoneyChanged?.Invoke();
     }
 }

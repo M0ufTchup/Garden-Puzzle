@@ -89,24 +89,30 @@ public partial class LevelManager : Node3D
                 if (cell is not null)
                 {
                     GD.Print($"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
-                    
-                    if (cell.Plant is null && _levelModel.SelectedPlantData is not null)
-                    {
-                        cell.SetPlant(PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up));
-                        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
-                    }
+                    TryPlanting(cell);
                 }
             }
         }
+    }
+
+    private void TryPlanting(ICell cell)
+    {
+        if (cell.Plant is not null)
+            return;
+        if (_levelModel.SelectedPlantData is null)
+            return;
+        if(!_levelModel.SelectedPlantData.AllowedGroundTypes.Contains(cell.GroundType) || _levelModel.Money < _levelModel.SelectedPlantData.Cost)
+            return;
+
+        _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
+        cell.SetPlant(PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up));
+        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
     }
 
     private void EndTurn()
     {
         if (_levelModel.CurrentTurnIndex >= LevelData.TurnCount)
             return;
-        
-        // TODO: do real end turn logic
-        _levelModel.Money += 10;
         
         // pass to next turn
         if (_levelModel.CurrentTurnIndex + 1 < LevelData.TurnCount)

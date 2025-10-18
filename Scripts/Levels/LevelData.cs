@@ -12,6 +12,7 @@ namespace GardenPuzzle.Levels;
 public partial class LevelData : Resource
 {
     [Export] public string Name = "New Level";
+    [Export] public int StartMoney = 50;
     [Export] public PackedScene LevelScene { get; private set; }
     [Export] public Godot.Collections.Array<PlantData> AllowedPlants { get; private set; }
     [Export] public Godot.Collections.Array<LevelTurnData> TurnsData { get; private set; }
