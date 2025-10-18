@@ -38,4 +38,10 @@ public partial class GameGrid : GridMap, IGrid
 		Vector3I mapPosition = LocalToMap(ToLocal(worldPosition));
 		return GetCell(new Vector2I(mapPosition.X, mapPosition.Z));
 	}
+
+	public Vector3 GetCellWorldPosition(ICell cell)
+	{
+		Vector3I mapPosition = new Vector3I(cell.Position.X, 0, cell.Position.Y);
+		return ToGlobal(MapToLocal(mapPosition));
+	}
 }

@@ -4,7 +4,7 @@ using Godot;
 namespace GardenPuzzle.Plants;
 
 [GlobalClass]
-public partial class PlantManager : Node
+public partial class PlantManager : Node3D
 {
     public static PlantManager Instance { get; private set; }
 
@@ -37,11 +37,14 @@ public partial class PlantManager : Node
         }
     }
 
-    public void SpawnPlant(Node3D parent, Vector3 globalPosition)
+    public Plant SpawnPlant(PlantData plantData, Vector3 globalPosition, Node3D parent = null)
     {
         Plant plant = _plantScene.Instantiate<Plant>();
-        plant.AddChild(parent);
+        if (parent is null) parent = this;
+        parent.AddChild(plant);
         plant.GlobalPosition = globalPosition;
+        plant.SetData(plantData);
+        return plant;
     }
 
     public void KillPlant(Plant plant)

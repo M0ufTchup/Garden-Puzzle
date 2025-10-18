@@ -37,6 +37,6 @@ public partial class PlantSelectionUI : Control
 
     private void OnPlantButtonPressed(PlantData plantData)
     {
-        // TODO
+        _levelModel.SelectedPlantData = plantData;
     }
 }

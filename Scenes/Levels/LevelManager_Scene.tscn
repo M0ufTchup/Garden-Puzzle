@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://c2e6f15uoro53"
 
 [node name="LevelUiScene" parent="." instance=ExtResource("3_sbeis")]
 
-[node name="PlantManager" type="Node" parent="."]
+[node name="PlantManager" type="Node3D" parent="."]
 script = ExtResource("3_cpho2")
 _plantScene = ExtResource("4_wwic3")
 metadata/_custom_type_script = "uid://catt0ikh0rva1"

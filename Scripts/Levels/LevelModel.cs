@@ -1,5 +1,6 @@
 using System;
 using GardenPuzzle.Grid;
+using GardenPuzzle.Plants;
 using Godot;
 
 namespace GardenPuzzle.Levels;
@@ -15,6 +16,7 @@ public partial class LevelModel : Resource
     [Export] public int Money;
     [Export] public int CurrentTurnIndex;
     [Export] public bool Won;
+    public PlantData SelectedPlantData;
 
     public Action RequestTurnEnd;
 
@@ -28,5 +30,6 @@ public partial class LevelModel : Resource
         Money = 0;
         CurrentTurnIndex = 0;
         Won = false;
+        SelectedPlantData = null;
     }
 }

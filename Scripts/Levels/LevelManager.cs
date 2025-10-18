@@ -1,5 +1,6 @@
 using System;
 using GardenPuzzle.Grid;
+using GardenPuzzle.Plants;
 using Godot;
 using Godot.Collections;
 
@@ -88,6 +89,12 @@ public partial class LevelManager : Node3D
                 if (cell is not null)
                 {
                     GD.Print($"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
+                    
+                    if (cell.Plant is null && _levelModel.SelectedPlantData is not null)
+                    {
+                        cell.SetPlant(PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up));
+                        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
+                    }
                 }
             }
         }
