@@ -37,10 +37,24 @@ public partial class LevelManager : Node3D
         levelInstance.Position = Vector3.Zero;
 
         Grid = levelInstance;
+        Grid.CellGroundChanged += OnCellGroundChanged;
         _levelModel.Reset(levelData, Grid);
         
         LevelStarted?.Invoke(LevelData);
         _levelModel.LevelStarted?.Invoke(LevelData);
+    }
+
+    private void OnCellGroundChanged(ICell cell)
+    {
+        if (cell.Plant is not null)
+        {
+            // kill plant if on "kill ground"
+            if (cell.Plant.Data.KillGroundTypes?.Contains(cell.GroundType) ?? false)
+            {
+                PlantManager.Instance.KillPlant(cell.Plant);
+                Grid.SetCellPlant(cell, null);
+            }
+        }
     }
 
     public override void _EnterTree()
