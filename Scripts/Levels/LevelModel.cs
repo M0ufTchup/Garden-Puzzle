@@ -16,11 +16,8 @@ public partial class LevelModel : Resource
     [Export] public LevelData LevelData;
     public IReadOnlyGrid Grid { get; private set; }
     [Export] public int Money { get; private set; }
-    [Export] public int CurrentTurnIndex;
     [Export] public bool Won;
     public PlantData SelectedPlantData;
-
-    public Action RequestTurnEnd;
 
     public Action<LevelData> LevelStarted;
     public Action<LevelData> LevelEnded;
@@ -30,7 +27,6 @@ public partial class LevelModel : Resource
         LevelData = levelData;
         Grid = grid;
         Money = LevelData.StartMoney;
-        CurrentTurnIndex = 0;
         Won = false;
         SelectedPlantData = null;
     }

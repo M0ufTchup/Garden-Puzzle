@@ -52,7 +52,6 @@ public partial class LevelManager : Node3D
             GD.PrintErr("LevelModel is null");
             return;
         }
-        _levelModel.RequestTurnEnd += EndTurn;
 
 #if TOOLS // TOOLS is defined when building with the Debug configuration (editor and editor player) (https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_features.html#preprocessor-defines)
         if (_debugLevelData is not null)
@@ -60,12 +59,6 @@ public partial class LevelManager : Node3D
             Init(_debugLevelData);
         }
 #endif
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        _levelModel.RequestTurnEnd -= EndTurn;
     }
 
     public override void _Input(InputEvent inputEvent)
@@ -107,19 +100,12 @@ public partial class LevelManager : Node3D
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
         cell.SetPlant(PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up));
         GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
+        OnPlantation();
     }
 
-    private void EndTurn()
+    private void OnPlantation()
     {
-        if (_levelModel.CurrentTurnIndex >= LevelData.TurnCount)
-            return;
-        
-        // pass to next turn
-        if (_levelModel.CurrentTurnIndex + 1 < LevelData.TurnCount)
-        {
-            _levelModel.CurrentTurnIndex++;
-        }
-        else
+        if (_levelModel.Money <= 0)
         {
             EndLevel();
         }

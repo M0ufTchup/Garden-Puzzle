@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using GardenPuzzle.Plants;
 using Godot;
 
@@ -15,6 +14,4 @@ public partial class LevelData : Resource
     [Export] public int StartMoney = 50;
     [Export] public PackedScene LevelScene { get; private set; }
     [Export] public Godot.Collections.Array<PlantData> AllowedPlants { get; private set; }
-    [Export] public Godot.Collections.Array<LevelTurnData> TurnsData { get; private set; }
-    public int TurnCount => TurnsData.Count;
 }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv1ygrh8y6ilv"]
+[gd_scene load_steps=6 format=3 uid="uid://bv1ygrh8y6ilv"]
 
 [ext_resource type="Script" uid="uid://8mmwiq1bmhjl" path="res://Scripts/UI/LevelUI.cs" id="1_00knt"]
 [ext_resource type="Resource" uid="uid://cx7klg7pnoqps" path="res://Scripts/Levels/LevelModel.tres" id="2_ejoya"]
-[ext_resource type="Theme" uid="uid://dyahhdsytcfcq" path="res://Data/UITheme.tres" id="3_kv83m"]
 [ext_resource type="PackedScene" uid="uid://dqtikhmmr0541" path="res://Scenes/UI/Plants/PlantSelectionUIScene.tscn" id="4_cbq8t"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xp2oy"]
@@ -10,38 +9,22 @@
 [sub_resource type="LabelSettings" id="LabelSettings_xp2oy"]
 font_size = 64
 
-[node name="LevelUiScene" type="Control" node_paths=PackedStringArray("_endTurnButton", "_turnLabel", "_moneyLabel", "_levelNameLabel", "_winControl", "_loseControl")]
+[node name="LevelUiScene" type="Control" node_paths=PackedStringArray("_moneyLabel", "_levelNameLabel", "_winControl", "_loseControl")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_00knt")
 _levelModel = ExtResource("2_ejoya")
-_endTurnButton = NodePath("EndTurnButton")
-_turnLabel = NodePath("Turns/TurnLabel")
 _moneyLabel = NodePath("Money/MoneyLabel")
 _levelNameLabel = NodePath("LevelNameLabel")
 _winControl = NodePath("WinPanel")
 _loseControl = NodePath("LosePanel")
 metadata/_custom_type_script = "uid://8mmwiq1bmhjl"
-
-[node name="EndTurnButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -156.0
-offset_top = -49.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("3_kv83m")
-text = "End turn"
 
 [node name="PlantSelection" parent="." instance=ExtResource("4_cbq8t")]
 layout_mode = 1
@@ -53,26 +36,6 @@ offset_top = -285.0
 offset_right = 305.0
 offset_bottom = 300.0
 grow_vertical = 2
-
-[node name="Turns" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -181.0
-offset_top = 8.0
-offset_right = -14.0
-offset_bottom = 48.0
-grow_horizontal = 0
-alignment = 2
-
-[node name="TurnLabel" type="Label" parent="Turns"]
-layout_mode = 2
-text = "X/X"
-
-[node name="Label" type="Label" parent="Turns"]
-layout_mode = 2
-text = "turns"
 
 [node name="Money" type="HBoxContainer" parent="."]
 layout_mode = 1
