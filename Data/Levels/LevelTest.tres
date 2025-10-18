@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://d20qv5qae1mek"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3 uid="uid://d20qv5qae1mek"]
 
 [ext_resource type="Resource" uid="uid://ce70no283ew5h" path="res://Data/Plants/PlantTest.tres" id="1_ic47u"]
 [ext_resource type="PackedScene" uid="uid://co1206q5rew4g" path="res://Scenes/Levels/LevelTest_Scene.tscn" id="1_t8xbx"]
+[ext_resource type="Resource" uid="uid://c3hovene2de3k" path="res://Data/Plants/PlantBaseA.tres" id="2_701qr"]
 [ext_resource type="Script" uid="uid://b8h6ihtcodg8a" path="res://Scripts/Levels/LevelData.cs" id="3_255av"]
+[ext_resource type="Resource" uid="uid://bm142tm7mscvy" path="res://Data/Plants/PlantBaseB.tres" id="3_kljdg"]
 
 [resource]
 script = ExtResource("3_255av")
 Name = "Test Level"
 LevelScene = ExtResource("1_t8xbx")
-AllowedPlants = Array[Object]([ExtResource("1_ic47u")])
+AllowedPlants = Array[Object]([ExtResource("1_ic47u"), ExtResource("2_701qr"), ExtResource("3_kljdg")])
 metadata/_custom_type_script = "uid://b8h6ihtcodg8a"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=10 format=3 uid="uid://c3hovene2de3k"]
+
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_6gcvs"]
+[ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_gu74x"]
+[ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_wg7h5"]
+[ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="3_t5t7l"]
+[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="4_u0a37"]
+[ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="5_r2x55"]
+[ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="6_55jl0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tuel"]
+albedo_color = Color(0, 0.85882354, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6gcvs"]
+material = SubResource("StandardMaterial3D_5tuel")
+radius = 0.1
+height = 0.5
+
+[resource]
+script = ExtResource("1_gu74x")
+Name = "Plant Base A"
+Mesh = SubResource("CapsuleMesh_6gcvs")
+Family = ExtResource("6_55jl0")
+Cost = 5
+AllowedGroundTypes = Array[Object]([ExtResource("1_6gcvs"), ExtResource("2_wg7h5"), ExtResource("3_t5t7l"), ExtResource("4_u0a37"), ExtResource("5_r2x55")])
+metadata/_custom_type_script = "uid://vypd1ab6ntie"

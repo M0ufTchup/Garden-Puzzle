@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="GameGridConfig" load_steps=5 format=3 uid="uid://cka36dfuvl0tm"]
 
 [ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_6gltn"]
-[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="3_hhm7y"]
+[ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_esxjb"]
 [ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="5_imk13"]
 [ext_resource type="Script" uid="uid://clbnidmrticdc" path="res://Scripts/Grid/GameGridConfig.cs" id="6_7yagl"]
 
 [resource]
 script = ExtResource("6_7yagl")
 _groundMeshes = Dictionary[String, ExtResource("1_6gltn")]({
-"DefaultGround": ExtResource("3_hhm7y"),
+"DefaultGround": ExtResource("2_esxjb"),
 "WaterGround": ExtResource("5_imk13")
 })
 metadata/_custom_type_script = "uid://clbnidmrticdc"
