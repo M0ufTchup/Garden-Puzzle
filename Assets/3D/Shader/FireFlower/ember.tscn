@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://hvjwm2rvshiv"]
+
+[ext_resource type="Material" uid="uid://2h7j4d61jy44" path="res://Assets/3D/Shader/FireFlower/EmberMat.tres" id="1_50i6f"]
+
+[sub_resource type="Curve" id="Curve_h84tp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_idq3x"]
+curve = SubResource("Curve_h84tp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ry7v"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.0
+alpha_curve = SubResource("CurveTexture_idq3x")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 50.0
+turbulence_noise_speed_random = 1.22
+
+[sub_resource type="QuadMesh" id="QuadMesh_kntm0"]
+material = ExtResource("1_50i6f")
+size = Vector2(0.5, 0.5)
+
+[node name="Ember" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0120975375, 0, 0)
+amount = 5
+amount_ratio = 0.75
+process_material = SubResource("ParticleProcessMaterial_8ry7v")
+draw_pass_1 = SubResource("QuadMesh_kntm0")

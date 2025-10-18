@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2h7j4d61jy44"]
+
+[ext_resource type="Shader" uid="uid://c1mt5t5fy78wj" path="res://Assets/3D/Shader/FireFlower/Ember.tres" id="1_ekowc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ekowc")
+shader_parameter/BrightnessMin = 0.1
+shader_parameter/BrightnessMax = 6.0
+shader_parameter/FlashyFreq = 1.0
