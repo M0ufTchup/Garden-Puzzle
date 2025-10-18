@@ -5,6 +5,6 @@ namespace GardenPuzzle.Grid;
 
 public interface ICell : IReadOnlyCell
 {
-    void SetGroundType(GroundType groundType);
-    void SetPlant(Plant plant);
+    internal void SetGroundType(GroundType groundType);
+    internal void SetPlant(Plant plant);
 }

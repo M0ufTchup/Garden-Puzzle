@@ -99,8 +99,7 @@ public partial class LevelManager : Node3D
 
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
         Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up);
-        cell.SetPlant(spawnedPlant);
-        spawnedPlant.Cell = cell;
+        Grid.SetCellPlant(cell, spawnedPlant);
         GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
         OnPlantation(spawnedPlant, cell);
     }

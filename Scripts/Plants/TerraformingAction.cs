@@ -21,7 +21,7 @@ public partial class TerraformingAction : Resource
                     continue;
                 
                 ICell cell = grid.GetCell(centerCell.Position + new Vector2I(i, j) - new Vector2I(_resourceGroundTypeArray2D.Count / 2, _resourceGroundTypeArray2D[i].Count / 2));
-                cell?.SetGroundType(wantedGroundType);
+                if(cell is not null) grid.SetCellGroundType(cell, wantedGroundType);
             }
         }
     }
