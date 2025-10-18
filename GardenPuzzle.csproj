@@ -4,4 +4,8 @@
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="addons\array_2d_export\debug\debug.tscn" />
+    <Content Include="addons\array_2d_export\int\array_2d_int.tscn" />
+  </ItemGroup>
 </Project>

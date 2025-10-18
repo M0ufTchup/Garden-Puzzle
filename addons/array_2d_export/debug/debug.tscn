@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://ql7dx4u6h4l3"]
+
+[ext_resource type="Script" uid="uid://cdgmuoc1s3u7t" path="res://addons/array_2d_export/debug/DebugScript.cs" id="1_0u5vx"]
+[ext_resource type="Script" uid="uid://bss43h3aelsom" path="res://addons/array_2d_export/debug/DebugResource.cs" id="2_nildg"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_nildg"]
+
+[sub_resource type="Shortcut" id="Shortcut_yrdv2"]
+
+[sub_resource type="Resource" id="Resource_yrdv2"]
+script = ExtResource("2_nildg")
+DebugIntArray2D = Array[Array]([Array[int]([1, 0, 1]), Array[int]([0, 1, 0]), Array[int]([0, 0, 2])])
+DebugTypoArray2D = null
+PrimaryResourceShortcutArray2D = Array[Array]([Array[Resource]([SubResource("Shortcut_yrdv2"), null, null]), Array[Resource]([null, null, null]), Array[Resource]([null, null, null])])
+PrimaryResourceImageTextureArray2D = Array[Array]([Array[Resource]([SubResource("ImageTexture_nildg"), null, null]), Array[Resource]([null, null, null]), Array[Resource]([null, null, null])])
+metadata/_custom_type_script = "uid://bss43h3aelsom"
+
+[node name="DebugNode" type="Node2D"]
+script = ExtResource("1_0u5vx")
+ShapeArray2D = SubResource("Resource_yrdv2")
