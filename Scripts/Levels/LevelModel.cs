@@ -33,6 +33,8 @@ public partial class LevelModel : Resource
 
     public void SetMoney(int newMoney)
     {
+        if (newMoney == Money)
+            return;
         Money = newMoney;
         MoneyChanged?.Invoke();
     }
