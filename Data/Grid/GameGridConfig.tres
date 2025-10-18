@@ -1,14 +1,93 @@
-[gd_resource type="Resource" script_class="GameGridConfig" load_steps=5 format=3 uid="uid://cka36dfuvl0tm"]
+[gd_resource type="Resource" script_class="GameGridConfig" load_steps=27 format=3 uid="uid://8sfofy3ip4jc"]
 
-[ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_6gltn"]
-[ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_esxjb"]
-[ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="5_imk13"]
-[ext_resource type="Script" uid="uid://clbnidmrticdc" path="res://Scripts/Grid/GameGridConfig.cs" id="6_7yagl"]
+[ext_resource type="Script" uid="uid://cnqjqstvsy303" path="res://Scripts/Grid/Config/GroundMeshDefinition.cs" id="1_njj1l"]
+[ext_resource type="Script" uid="uid://clbnidmrticdc" path="res://Scripts/Grid/Config/GameGridConfig.cs" id="2_bw5ad"]
+[ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_j0ngj"]
+[ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="3_7ngw8"]
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="4_7ngw8"]
+[ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="5_d8scf"]
+[ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="6_ikajl"]
+[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="7_kva1l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8scf"]
+albedo_color = Color(0.83137256, 0.5411765, 0.2784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bpywd"]
+material = SubResource("StandardMaterial3D_d8scf")
+
+[sub_resource type="Resource" id="Resource_ikajl"]
+script = ExtResource("1_njj1l")
+Name = "Dry"
+GroundType = ExtResource("2_j0ngj")
+Mesh = SubResource("BoxMesh_bpywd")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kva1l"]
+albedo_color = Color(0, 0.7983431, 3.85046e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wb314"]
+material = SubResource("StandardMaterial3D_kva1l")
+
+[sub_resource type="Resource" id="Resource_7o2gr"]
+script = ExtResource("1_njj1l")
+Name = "Grass"
+GroundType = ExtResource("3_7ngw8")
+Mesh = SubResource("BoxMesh_wb314")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpywd"]
+albedo_color = Color(1.6244128e-06, 0.38237458, 4.813075e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikajl"]
+material = SubResource("StandardMaterial3D_bpywd")
+
+[sub_resource type="Resource" id="Resource_kva1l"]
+script = ExtResource("1_njj1l")
+Name = "Humid"
+GroundType = ExtResource("4_7ngw8")
+Mesh = SubResource("BoxMesh_ikajl")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikajl"]
+albedo_color = Color(0.41568628, 0.11372549, 0.11372549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kva1l"]
+material = SubResource("StandardMaterial3D_ikajl")
+
+[sub_resource type="Resource" id="Resource_wb314"]
+script = ExtResource("1_njj1l")
+Name = "Ashes"
+GroundType = ExtResource("5_d8scf")
+Mesh = SubResource("BoxMesh_kva1l")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb314"]
+albedo_color = Color(0, 0.7254902, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7o2gr"]
+material = SubResource("StandardMaterial3D_wb314")
+
+[sub_resource type="Resource" id="Resource_ht7te"]
+script = ExtResource("1_njj1l")
+Name = "Water"
+GroundType = ExtResource("6_ikajl")
+Mesh = SubResource("BoxMesh_7o2gr")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vxc4"]
+albedo_color = Color(0.66620934, 0.00033489376, 0.66701835, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rn0vk"]
+material = SubResource("StandardMaterial3D_0vxc4")
+
+[sub_resource type="Resource" id="Resource_jhpav"]
+script = ExtResource("1_njj1l")
+Name = "Multi"
+GroundType = ExtResource("7_kva1l")
+Mesh = SubResource("BoxMesh_rn0vk")
+metadata/_custom_type_script = "uid://cnqjqstvsy303"
 
 [resource]
-script = ExtResource("6_7yagl")
-_groundMeshes = Dictionary[String, ExtResource("1_6gltn")]({
-"DefaultGround": ExtResource("2_esxjb"),
-"WaterGround": ExtResource("5_imk13")
-})
+script = ExtResource("2_bw5ad")
+_groundMeshDefinitions = Array[ExtResource("1_njj1l")]([SubResource("Resource_ikajl"), SubResource("Resource_7o2gr"), SubResource("Resource_kva1l"), SubResource("Resource_wb314"), SubResource("Resource_ht7te"), SubResource("Resource_jhpav")])
 metadata/_custom_type_script = "uid://clbnidmrticdc"

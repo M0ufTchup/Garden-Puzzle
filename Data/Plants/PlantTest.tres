@@ -22,6 +22,5 @@ script = ExtResource("1_j2cy0")
 Name = "Test Plant"
 Mesh = SubResource("CapsuleMesh_73tpw")
 Family = ExtResource("3_sy8cq")
-Cost = 5
 AllowedGroundTypes = Array[Object]([ExtResource("1_22lxk"), ExtResource("3_jv4x2"), ExtResource("3_vo6oc"), ExtResource("4_atvmp"), ExtResource("5_htsx6"), ExtResource("2_sy8cq")])
 metadata/_custom_type_script = "uid://vypd1ab6ntie"
