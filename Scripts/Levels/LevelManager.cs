@@ -1,6 +1,7 @@
 using System;
 using GardenPuzzle.Grid;
 using Godot;
+using Godot.Collections;
 
 namespace GardenPuzzle.Levels;
 
@@ -17,6 +18,7 @@ public partial class LevelManager : Node3D
     
     [Export] private LevelModel _levelModel;
     [Export] private Node3D _levelParent;
+    [Export] private float _rayLength = 100;
     [ExportGroup("Debug")]
     [Export] private LevelData _debugLevelData; // if not null, will launch this LevelData automatically
     private LevelData LevelData => _levelModel.LevelData;
@@ -63,6 +65,32 @@ public partial class LevelManager : Node3D
     {
         base._ExitTree();
         _levelModel.RequestTurnEnd -= EndTurn;
+    }
+
+    public override void _Input(InputEvent inputEvent)
+    {
+        base._Input(inputEvent);
+        
+        if (inputEvent.IsActionPressed("interact") && inputEvent is InputEventMouseButton eventMouseButton)
+        {
+            Camera3D camera3D = GetViewport().GetCamera3D();
+            Vector3 from = camera3D.ProjectRayOrigin(eventMouseButton.Position);
+            Vector3 to = from + camera3D.ProjectRayNormal(eventMouseButton.Position) * _rayLength;
+            
+            var query = PhysicsRayQueryParameters3D.Create(from, to);
+            query.CollideWithAreas = false;
+
+            Dictionary result = GetWorld3D().GetDirectSpaceState().IntersectRay(query);
+            if (result.TryGetValue("collider", out var collider))
+            {
+                Vector3 collisionPosition = (Vector3)result["position"];
+                ICell cell = Grid.GetCell(collisionPosition);
+                if (cell is not null)
+                {
+                    GD.Print($"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
+                }
+            }
+        }
     }
 
     private void EndTurn()

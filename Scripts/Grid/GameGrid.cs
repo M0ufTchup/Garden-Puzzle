@@ -33,4 +33,9 @@ public partial class GameGrid : GridMap, IGrid
 
 	public IReadOnlyCell GetReadOnlyCell(Vector2I position) => GetCell(position);
 	public ICell GetCell(Vector2I position) => _cells.GetValueOrDefault(position);
+	public ICell GetCell(Vector3 worldPosition)
+	{
+		Vector3I mapPosition = LocalToMap(ToLocal(worldPosition));
+		return GetCell(new Vector2I(mapPosition.X, mapPosition.Z));
+	}
 }
