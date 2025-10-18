@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="GameGridConfig" load_steps=5 format=3 uid="uid://cka36dfuvl0tm"]
+[gd_resource type="Resource" script_class="GameGridConfig" load_steps=9 format=3 uid="uid://cka36dfuvl0tm"]
 
 [ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_6gltn"]
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_esxjb"]
+[ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="4_nmv7k"]
 [ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="5_imk13"]
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="5_mo5jx"]
 [ext_resource type="Script" uid="uid://clbnidmrticdc" path="res://Scripts/Grid/GameGridConfig.cs" id="6_7yagl"]
+[ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="6_o8jbc"]
+[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="7_5tvdt"]
 
 [resource]
 script = ExtResource("6_7yagl")
 _groundMeshes = Dictionary[String, ExtResource("1_6gltn")]({
-"DefaultGround": ExtResource("2_esxjb"),
-"WaterGround": ExtResource("5_imk13")
+"Ashes": ExtResource("6_o8jbc"),
+"Dry": ExtResource("2_esxjb"),
+"Grass": ExtResource("4_nmv7k"),
+"Humid": ExtResource("5_mo5jx"),
+"Multi": ExtResource("7_5tvdt"),
+"Water": ExtResource("5_imk13")
 })
 metadata/_custom_type_script = "uid://clbnidmrticdc"
