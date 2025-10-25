@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2pyv20xk8wqs"]
+
+[ext_resource type="Shader" uid="uid://bqgjjn4soyfvh" path="res://Assets/3D/Shader/Dissolve/Dissolve3D.gdshader" id="1_xo8bl"]
+[ext_resource type="Texture2D" uid="uid://bvg3wjs8d0yhp" path="res://Assets/3D/Shader/FireFlower/bigfire_single.PNG" id="2_88vpi"]
+[ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="2_m3027"]
+[ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="2_snjcg"]
+[ext_resource type="Script" uid="uid://xjyyjx3o6rjf" path="res://Assets/3D/Shader/Dissolve/Dissolve3DInput.gd" id="2_xo8bl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo8bl"]
+render_priority = 0
+shader = ExtResource("1_xo8bl")
+shader_parameter/texture = ExtResource("2_m3027")
+shader_parameter/blendTexture = ExtResource("2_88vpi")
+shader_parameter/noiseTexture = ExtResource("2_snjcg")
+shader_parameter/offset = 0.0
+shader_parameter/up = false
+shader_parameter/borderColor = Color(0.8, 0.64705884, 0, 1)
+shader_parameter/borderHeight = 0.1
+shader_parameter/waveAmplitude = 1.0
+shader_parameter/waveFrequency = 1.0
+shader_parameter/wavePhase = 0.1
+shader_parameter/emissionIntensity = 1.0
+shader_parameter/noiseSpeed = 0.05
+shader_parameter/noiseInfluence = 1.0
+shader_parameter/blendUVScale = Vector2(0, 0)
+shader_parameter/noiseUVScale = Vector2(1, 1)
+shader_parameter/textureUVScale = Vector2(1, 1)
+shader_parameter/global_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_se5rf"]
+material = SubResource("ShaderMaterial_xo8bl")
+
+[node name="Body" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_se5rf")
+script = ExtResource("2_xo8bl")
+testShader = true
+speed = 3.0
+from = -5.0
+to = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9771273, 0.21265522, 0, -0.21265522, 0.9771273, 0, 1.2531426, 3.644884)
