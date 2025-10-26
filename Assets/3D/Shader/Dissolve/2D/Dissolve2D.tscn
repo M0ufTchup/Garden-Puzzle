@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcb3iw71gby26"]
 
-[ext_resource type="Shader" uid="uid://dbaxy3w1k0o7i" path="res://Assets/3D/Shader/Dissolve/Dissolve2D.gdshader" id="1_xr1ca"]
+[ext_resource type="Shader" uid="uid://dbaxy3w1k0o7i" path="res://Assets/3D/Shader/Dissolve/2D/Dissolve2D.gdshader" id="1_xr1ca"]
 [ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="2_5gmx7"]
 [ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="3_10cs6"]
-[ext_resource type="Script" uid="uid://cx7a2ljqfpfo3" path="res://Assets/3D/Shader/Dissolve/Dissolve2DInput.gd" id="4_wpc8a"]
+[ext_resource type="Script" uid="uid://cx7a2ljqfpfo3" path="res://Assets/3D/Shader/Dissolve/2D/Dissolve2DInput.gd" id="4_wpc8a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xo8bl"]
 shader = ExtResource("1_xr1ca")

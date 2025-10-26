@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2pyv20xk8wqs"]
 
-[ext_resource type="Shader" uid="uid://bqgjjn4soyfvh" path="res://Assets/3D/Shader/Dissolve/Dissolve3D.gdshader" id="1_xo8bl"]
+[ext_resource type="Shader" uid="uid://bqgjjn4soyfvh" path="res://Assets/3D/Shader/Dissolve/3D/V1/Dissolve3D.gdshader" id="1_xo8bl"]
 [ext_resource type="Texture2D" uid="uid://bvg3wjs8d0yhp" path="res://Assets/3D/Shader/FireFlower/bigfire_single.PNG" id="2_88vpi"]
 [ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="2_m3027"]
 [ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="2_snjcg"]
-[ext_resource type="Script" uid="uid://xjyyjx3o6rjf" path="res://Assets/3D/Shader/Dissolve/Dissolve3DInput.gd" id="2_xo8bl"]
+[ext_resource type="Script" uid="uid://xjyyjx3o6rjf" path="res://Assets/3D/Shader/Dissolve/3D/V1/Dissolve3DInput.gd" id="2_xo8bl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xo8bl"]
 render_priority = 0
