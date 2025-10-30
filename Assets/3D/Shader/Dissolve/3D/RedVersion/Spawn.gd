@@ -3,7 +3,7 @@ extends MeshInstance3D
 var testShader: bool = false
 @export var curve: Curve
 @export var loop : bool = false;
-@onready var particle: GPUParticles3D = $GPUParticles3D
+@onready var particle: GPUParticles3D = $SpawnVFX
 
 var time: float = 0.0
 var dir: int = 1

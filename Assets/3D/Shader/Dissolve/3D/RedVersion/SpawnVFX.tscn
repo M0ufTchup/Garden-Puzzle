@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://7jbkx1et4sd0"]
+
+[ext_resource type="Shader" uid="uid://b7ox2oqwupe6d" path="res://NoiseDissolve.gdshader" id="1_4kct1"]
+[ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="2_qxvla"]
+[ext_resource type="Texture2D" uid="uid://beswrt5w8ud7w" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/LowResBlurredNoise.PNG" id="3_5u125"]
+[ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="4_m267o"]
+[ext_resource type="Script" uid="uid://c0ek67v6jdgj4" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/Spawn.gd" id="5_4kct1"]
+[ext_resource type="Shader" uid="uid://ccdtb4mbst4vm" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/ParticleSprite.gdshader" id="6_d2dea"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lpa2"]
+render_priority = 0
+shader = ExtResource("1_4kct1")
+shader_parameter/texture = ExtResource("4_m267o")
+shader_parameter/NoiseDissolveTexture = ExtResource("2_qxvla")
+shader_parameter/DissolveAmount = 1.0
+shader_parameter/DissolveEdgeColor = Color(1, 1, 0, 1)
+shader_parameter/NoiseMask = ExtResource("3_5u125")
+
+[sub_resource type="BoxMesh" id="BoxMesh_c0fg1"]
+material = SubResource("ShaderMaterial_5lpa2")
+
+[sub_resource type="Curve" id="Curve_c0fg1"]
+_limits = [-1.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(2, -1), 0.008095193, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tq01m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tq01m"]
+curve = SubResource("Curve_tq01m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4raw5"]
+lifetime_randomness = 0.25
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.049999997
+color = Color(1, 1, 0, 1)
+alpha_curve = SubResource("CurveTexture_tq01m")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.010000001
+turbulence_influence_max = 0.05
+collision_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vefhe"]
+render_priority = 0
+shader = ExtResource("6_d2dea")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w8273"]
+material = SubResource("ShaderMaterial_vefhe")
+
+[node name="Body" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_c0fg1")
+script = ExtResource("5_4kct1")
+curve = SubResource("Curve_c0fg1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9771273, 0.21265522, 0, -0.21265522, 0.9771273, 0, 1.2531426, 3.644884)
+
+[node name="SpawnVFX" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 200
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_4raw5")
+draw_pass_1 = SubResource("QuadMesh_w8273")
+
+[node name="GPUParticlesAttractorBox3D" type="GPUParticlesAttractorBox3D" parent="SpawnVFX"]
+strength = 5.0
+attenuation = 0.30778617
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="SpawnVFX"]
+size = Vector3(1, 1, 1)
