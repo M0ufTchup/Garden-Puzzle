@@ -39,7 +39,7 @@ public partial class GardenLogger : Node
 
         if (_sb.Length > 0)
         {
-            GD.Print(Time.GetTimeStringFromSystem());
+            _sb.Insert(0, Time.GetTimeStringFromSystem());
             if (_errorRegistered) GD.PrintErr(_sb.ToString());
             else GD.Print(_sb.ToString());
 
@@ -51,9 +51,10 @@ public partial class GardenLogger : Node
     public static void Log(object source, string message)
     {
         StringBuilder sb = _instance._sb;
-        if(sb.Length > 0) sb.Append("\t");
+        sb.Append('\n');
+        if(sb.Length > 0) sb.Append('\t');
         sb.Append($"[{source.GetType().Name}]\t");
-        sb.AppendLine(message);
+        sb.Append(message);
     }
 
     public static void LogError(object source, string message)

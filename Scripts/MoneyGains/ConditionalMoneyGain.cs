@@ -20,7 +20,9 @@ public partial class ConditionalMoneyGain : MoneyGain
             if (!gridCondition.IsRespected(grid, sourceGridRect))
                 return moneyGained;
         }
-
-        return IncrementMoneyGained(moneyGained);
+        
+        int newMoneyGained = IncrementMoneyGained(moneyGained);
+        GardenLogger.Log(this, $"Result: {newMoneyGained}\t(offset: {newMoneyGained - moneyGained})");
+        return newMoneyGained;
     }
 }

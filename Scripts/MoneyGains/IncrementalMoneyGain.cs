@@ -14,9 +14,11 @@ public partial class IncrementalMoneyGain : MoneyGain
             return moneyGained;
 
         int iteration = _countOf.ComputeCount(grid, sourceGridRect);
+        int newMoneyGained = moneyGained;
         for (int i = 0; i < iteration; i++)
-            moneyGained = IncrementMoneyGained(moneyGained);
+            newMoneyGained = IncrementMoneyGained(newMoneyGained);
         
-        return moneyGained;
+        GardenLogger.Log(this, $"Result: {newMoneyGained}\t(offset: {newMoneyGained - moneyGained})");
+        return newMoneyGained;
     }
 }
