@@ -70,7 +70,7 @@ public partial class LevelManager : Node3D
 #endif
     }
 
-    public override void _Input(InputEvent inputEvent)
+    public override void _UnhandledInput(InputEvent inputEvent)
     {
         base._Input(inputEvent);
         
