@@ -128,7 +128,7 @@ public partial class LevelManager : Node3D
             {
                 Vector2I gridPos = plantGridRect.Position + new Vector2I(i, j);
                 ICell cell = Grid.GetCell(gridPos);
-                if (cell is null || !_levelModel.SelectedPlantData.AllowedGroundTypes.Contains(cell.GroundType))
+                if (cell is null || cell.Plant is not null || !_levelModel.SelectedPlantData.AllowedGroundTypes.Contains(cell.GroundType))
                     return;
             }
         }
