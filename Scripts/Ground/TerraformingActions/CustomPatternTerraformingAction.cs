@@ -1,0 +1,34 @@
+using GardenPuzzle.Grid;
+using Godot;
+using Godot.Collections;
+
+namespace GardenPuzzle.Ground;
+
+[GlobalClass]
+public partial class CustomPatternTerraformingAction : TerraformingAction
+{
+    [Export] private Array<Array<GroundType>> _patternResourceGroundTypeArray2D;
+    
+    public override void Apply(IGrid grid, Rect2I gridRectSource)
+    {
+        if (gridRectSource.Size.X + 2 > _patternResourceGroundTypeArray2D.Count || gridRectSource.Size.Y + 2 > _patternResourceGroundTypeArray2D[0]?.Count)
+        {
+            GD.PrintErr($"[TERRAFORMING ACTION]: given gridRectSource is too large for the configured action (given grid rect: {gridRectSource}, configured {{xSize={_patternResourceGroundTypeArray2D.Count}, ySize={_patternResourceGroundTypeArray2D[0]?.Count}}})");
+            return;
+        }
+
+        Vector2I array2DSize = new Vector2I(_patternResourceGroundTypeArray2D.Count, _patternResourceGroundTypeArray2D[0].Count);
+        Rect2I customRect = new Rect2I(gridRectSource.Position - ((array2DSize - gridRectSource.Size) / 2), array2DSize);
+        for (int i = 0; i < customRect.Size.X; i++)
+        {
+            for (int j = 0; j < customRect.Size.Y; j++)
+            {
+                GroundType wantedGroundType = _patternResourceGroundTypeArray2D[i][j];
+                if (wantedGroundType is null)
+                    continue;
+
+                grid.SetCellGroundType(customRect.Position + new Vector2I(i, j), wantedGroundType);
+            }
+        }
+    }
+}
