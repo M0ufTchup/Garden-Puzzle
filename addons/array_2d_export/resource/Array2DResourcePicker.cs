@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 
 namespace Array2DExport.addons.array_2d_export;
@@ -29,3 +30,4 @@ public partial class Array2DResourcePicker : EditorResourcePicker
         EmitSignalCellValueChanged(_cell, resource);
     }
 }
+#endif
