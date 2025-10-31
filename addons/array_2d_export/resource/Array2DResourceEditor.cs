@@ -27,8 +27,9 @@ public partial class Array2DResourceEditor : EditorProperty
     public override void _Ready()
     {
         _currentValue = GetPropertyValue();
+        if (_currentValue.Count <= 0) _currentValue = Utils.Default2DArray<Resource>();
         _xCurrentSize = _currentValue.Count;
-        _yCurrentSize = _currentValue[0]?.Count ?? 1;
+        _yCurrentSize = _currentValue[0].Count;
         
         var scene = ResourceLoader.Load<PackedScene>(SceneName).Instantiate<VBoxContainer>();
         
@@ -62,6 +63,7 @@ public partial class Array2DResourceEditor : EditorProperty
         {
             _currentValue = Utils.Default2DArray<Resource>();
             _xGridSizeSpinBox.Value = Utils.DefaultArraySize;
+            _yGridSizeSpinBox.Value = Utils.DefaultArraySize;
         }
         _grid.UpdateGrid(_currentValue);
     }
