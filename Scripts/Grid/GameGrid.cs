@@ -63,6 +63,7 @@ public partial class GameGrid : GridMap, IGrid
 		return ToGlobal(MapToLocal(mapPosition));
 	}
 
+	public void SetCellGroundType(Vector2I cellPosition, GroundType groundType) => SetCellGroundType(GetCell(cellPosition), groundType);
 	public void SetCellGroundType(ICell cell, GroundType groundType)
 	{
 		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
@@ -75,14 +76,17 @@ public partial class GameGrid : GridMap, IGrid
 			SetCellItem(mapPosition, groundMeshDefinition.MeshLibraryId);
 		}
 		
+        GD.Print($"[GridMap] CellGround changed at '{cell.Position}' to '{groundType?.Name ?? "null"}'");
 		CellGroundChanged?.Invoke(internalCell);
 	}
 
+	public void SetCellPlant(Vector2I cellPosition, Plant plant) => SetCellPlant(GetCell(cellPosition), plant);
 	public void SetCellPlant(ICell cell, Plant plant)
 	{
 		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
 		internalCell.SetPlant(plant);
+		GD.Print($"[GameGrid] Cell at {cell.Position} has new plant '{plant?.Data.Name ?? "null"}'");
 		CellPlantChanged?.Invoke(internalCell);
 	}
 }

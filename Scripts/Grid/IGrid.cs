@@ -15,6 +15,8 @@ public interface IGrid : IReadOnlyGrid
 
     Vector3 GetCellWorldPosition(ICell cell);
     
+    void SetCellGroundType(Vector2I cellPosition, GroundType groundType);
     void SetCellGroundType(ICell cell, GroundType groundType);
+    void SetCellPlant(Vector2I cellPosition, Plant plant);
     void SetCellPlant(ICell cell, Plant plant);
 }

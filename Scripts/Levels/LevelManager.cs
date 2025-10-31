@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GardenPuzzle.Grid;
 using GardenPuzzle.Plants;
 using Godot;
@@ -46,13 +47,22 @@ public partial class LevelManager : Node3D
 
     private void OnCellGroundChanged(ICell cell)
     {
-        if (cell.Plant is not null)
+        Plant cellPlant = cell.Plant;
+        if (cellPlant is not null)
         {
             // kill plant if on "kill ground"
-            if (cell.Plant.Data.KillGroundTypes?.Contains(cell.GroundType) ?? false)
+            if (cellPlant.Data.KillGroundTypes?.Contains(cell.GroundType) ?? false)
             {
-                PlantManager.Instance.KillPlant(cell.Plant);
-                Grid.SetCellPlant(cell, null);
+                for (int i = 0; i < cellPlant.GridRect.Size.X; i++)
+                {
+                    for (int j = 0; j < cellPlant.GridRect.Size.Y; j++)
+                    {
+                        Grid.SetCellPlant(cellPlant.GridRect.Position + new Vector2I(i, j), null);
+                    }
+                }
+                
+                PlantManager.Instance.KillPlant(cellPlant);
+                GD.Print($"Removed plant '{cellPlant.Data.Name}'");
             }
         }
     }
@@ -102,25 +112,45 @@ public partial class LevelManager : Node3D
         }
     }
 
-    private void TryPlanting(ICell cell)
+    private void TryPlanting(ICell inputCell)
     {
-        if (cell.Plant is not null)
+        if (inputCell.Plant is not null)
             return;
         if (_levelModel.SelectedPlantData is null)
             return;
-        if(!_levelModel.SelectedPlantData.AllowedGroundTypes.Contains(cell.GroundType) || _levelModel.Money < _levelModel.SelectedPlantData.Cost)
+        if(_levelModel.Money < _levelModel.SelectedPlantData.Cost)
             return;
 
+        Rect2I plantGridRect = new Rect2I(inputCell.Position, _levelModel.SelectedPlantData.Size);
+        for (int i = 0; i < plantGridRect.Size.X; i++)
+        {
+            for (int j = 0; j < plantGridRect.Size.Y; j++)
+            {
+                Vector2I gridPos = plantGridRect.Position + new Vector2I(i, j);
+                ICell cell = Grid.GetCell(gridPos);
+                if (cell is null || !_levelModel.SelectedPlantData.AllowedGroundTypes.Contains(cell.GroundType))
+                    return;
+            }
+        }
+
+        ICell startCell = Grid.GetCell(plantGridRect.Position);
+        ICell endCell =  Grid.GetCell(plantGridRect.Position + plantGridRect.Size - Vector2I.One);
+        Vector3 centeredPlantWorldPos = (Grid.GetCellWorldPosition(startCell) + Grid.GetCellWorldPosition(endCell)) * 0.5f + Vector3.Up;
+        
+        Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, centeredPlantWorldPos);
+        spawnedPlant.SetGridRect(plantGridRect);
+        for (int i = 0; i < spawnedPlant.GridRect.Size.X; i++)
+            for (int j = 0; j < spawnedPlant.GridRect.Size.Y; j++)
+                Grid.SetCellPlant(spawnedPlant.GridRect.Position + new Vector2I(i, j), spawnedPlant);
+        
+        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {{{plantGridRect}}}");
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
-        Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, Grid.GetCellWorldPosition(cell) + Vector3.Up);
-        Grid.SetCellPlant(cell, spawnedPlant);
-        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {cell.Position}");
-        OnPlantation(spawnedPlant, cell);
+        OnPlantation(spawnedPlant);
     }
 
-    private void OnPlantation(Plant plant, ICell plantCell)
+    private void OnPlantation(Plant plant)
     {
-        plant.Data.TerraformingAction?.Apply(Grid, plantCell);
+        plant.Data.TerraformingAction?.Apply(Grid, plant.GridRect);
 
         _levelModel.SetMoney(_levelModel.Money + plant.Data.DefaultMoneyGain);
         
