@@ -20,9 +20,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Grid size"
+text = "Size"
 
-[node name="GridSizeSpinBox" type="SpinBox" parent="GridSizeContainer"]
+[node name="XGridSizeSpinBox" type="SpinBox" parent="GridSizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 32.0
+value = 3.0
+
+[node name="YGridSizeSpinBox" type="SpinBox" parent="GridSizeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0

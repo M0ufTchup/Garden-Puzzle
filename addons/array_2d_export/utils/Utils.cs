@@ -28,14 +28,14 @@ public static class Utils
     }
 
 #pragma warning disable GD0302
-    public static Array<Array<T>> Default2DArray<T>(int size = DefaultArraySize)
+    public static Array<Array<T>> Default2DArray<T>(int xSize = DefaultArraySize, int ySize = DefaultArraySize)
     {
         var result = new Array<Array<T>>();
         
-        for (int x = 0; x < size; x++)
+        for (int x = 0; x < xSize; x++)
         {
             result.Add(new Array<T>());
-            for (int y = 0; y < size; y++)
+            for (int y = 0; y < ySize; y++)
             {
                 result[x].Add(default);
             }
