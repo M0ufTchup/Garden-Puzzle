@@ -6,4 +6,5 @@
 script = ExtResource("1_1vcl0")
 Name = "Dried dirt"
 DebugColor = Color(0.83137256, 0.5411765, 0.2784314, 1)
+_acceptableTransformationOrigins = null
 metadata/_custom_type_script = "uid://dmsnlpapk3qqq"

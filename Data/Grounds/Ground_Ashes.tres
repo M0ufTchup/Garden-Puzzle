@@ -6,4 +6,5 @@
 script = ExtResource("1_jfxa3")
 Name = "Ashes"
 DebugColor = Color(0.23183304, 0.042737633, 0.0064666914, 1)
+_acceptableTransformationOrigins = null
 metadata/_custom_type_script = "uid://dmsnlpapk3qqq"

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="GroundType" load_steps=2 format=3 uid="uid://cetmm7w81exbo"]
+[gd_resource type="Resource" script_class="GroundType" load_steps=3 format=3 uid="uid://cetmm7w81exbo"]
 
+[ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="1_3t50u"]
 [ext_resource type="Script" uid="uid://dmsnlpapk3qqq" path="res://Scripts/Ground/GroundType.cs" id="1_jup38"]
 
 [resource]
 script = ExtResource("1_jup38")
 Name = "Watered Grass"
 DebugColor = Color(0.0530027, 0.45741677, 0.15406391, 1)
+_acceptableTransformationOrigins = Array[Object]([ExtResource("1_3t50u")])
 metadata/_custom_type_script = "uid://dmsnlpapk3qqq"

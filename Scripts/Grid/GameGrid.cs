@@ -35,14 +35,14 @@ public partial class GameGrid : GridMap, IGrid
 		foreach (Vector3I usedCellPosition in GetUsedCells())
 		{
 			string usedCellItemName = MeshLibrary.GetItemName(GetCellItem(usedCellPosition));
-			GD.Print($"[GameGrid] Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
+			// GD.Print($"[GameGrid] Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
 			if (_config.TryGetMeshDefinition(usedCellItemName, out GroundMeshDefinition groundMeshDefinition))
 			{
 				Vector2I simplifiedCellPosition = new Vector2I(usedCellPosition.X, usedCellPosition.Z);
 				_cells[simplifiedCellPosition] = new Cell(simplifiedCellPosition, groundMeshDefinition.GroundType);
 				SetCellItem(usedCellPosition, groundMeshDefinition.MeshLibraryId);
 				
-				GD.Print($"[GameGrid] GridMap cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
+				// GD.Print($"[GameGrid] GridMap cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
 			}
 		}
 
@@ -67,6 +67,8 @@ public partial class GameGrid : GridMap, IGrid
 	public void SetCellGroundType(ICell cell, GroundType groundType)
 	{
 		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
+			return;
+		if (!internalCell.GroundType.AllowTransformation(groundType))
 			return;
 		internalCell.SetGroundType(groundType);
 

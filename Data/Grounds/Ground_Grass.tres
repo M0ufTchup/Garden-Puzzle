@@ -6,4 +6,5 @@
 script = ExtResource("1_jy5rk")
 Name = "Grass"
 DebugColor = Color(0.09803922, 0.8235294, 0.29411766, 1)
+_acceptableTransformationOrigins = null
 metadata/_custom_type_script = "uid://dmsnlpapk3qqq"
