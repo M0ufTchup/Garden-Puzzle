@@ -25,6 +25,7 @@ public partial class CountOfPlantFamily : CountOf
             if (plantCounts.TryGetValue(expectedPlantFamily, out var count))
                 totalCount += count;
         
+        GardenLogger.Log(this, $"Counted {totalCount} acceptable plants within the {_expectedPlantFamilies.Count} expected families");
         return totalCount;
     }
 }

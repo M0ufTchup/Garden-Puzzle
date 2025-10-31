@@ -25,6 +25,7 @@ public partial class CountOfGroundType : CountOf
             if (plantCounts.TryGetValue(expectedGroundType, out var count))
                 totalCount += count;
         
+        GardenLogger.Log(this, $"Counted {totalCount} acceptable ground within the {_expectedGroundTypes.Count} expected ground types");
         return totalCount;
     }
 }
