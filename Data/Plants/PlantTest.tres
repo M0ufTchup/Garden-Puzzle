@@ -9,18 +9,19 @@
 [ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="4_atvmp"]
 [ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="5_htsx6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jv4x2"]
-albedo_color = Color(0.11372549, 0.11764706, 0.12156863, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo6oc"]
+albedo_color = Color(0.06666667, 0.078431375, 0.08235294, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_73tpw"]
-material = SubResource("StandardMaterial3D_jv4x2")
-radius = 0.1
-height = 0.5
+[sub_resource type="CylinderMesh" id="CylinderMesh_atvmp"]
+material = SubResource("StandardMaterial3D_vo6oc")
+top_radius = 0.2
+bottom_radius = 0.4
+height = 1.0
 
 [resource]
 script = ExtResource("1_j2cy0")
 Name = "Test Plant"
-Mesh = SubResource("CapsuleMesh_73tpw")
+Mesh = SubResource("CylinderMesh_atvmp")
 Family = ExtResource("3_sy8cq")
 AllowedGroundTypes = Array[Object]([ExtResource("1_22lxk"), ExtResource("3_jv4x2"), ExtResource("3_vo6oc"), ExtResource("4_atvmp"), ExtResource("5_htsx6"), ExtResource("2_sy8cq")])
 KillGroundTypes = null
