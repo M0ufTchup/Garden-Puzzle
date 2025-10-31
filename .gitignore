@@ -24,3 +24,6 @@ mono_crash.*.json
 # IDE's caches
 .vs/
 .idea/
+
+# Builds
+Builds/
