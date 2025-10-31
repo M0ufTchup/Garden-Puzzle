@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0se0wgk3iqxh"]
+[gd_scene load_steps=13 format=3 uid="uid://b0se0wgk3iqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bem86afntnqv5" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante D/Plante Aqua D 3X1 F.fbx" id="1_ktah3"]
 [ext_resource type="PackedScene" uid="uid://b8pfkslqb1y26" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante C/Plante Aqua C 2x2 F.fbx" id="2_6dxg6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbtnsoot6vfr" path="res://Assets/3D/Fleurs/Fleurs base/Plante E/Plante base E F.fbx" id="9_dvift"]
 [ext_resource type="PackedScene" uid="uid://b5q821u55gt5n" path="res://Assets/3D/Fleurs/Fleurs base/Plante F/Plante base F 3x3 F.fbx" id="10_8nw1p"]
 [ext_resource type="PackedScene" uid="uid://2wrakxt0dpsh" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/Fleur feu A F.fbx" id="11_wplx7"]
+[ext_resource type="PackedScene" uid="uid://cy4ttatsfcc73" path="res://Assets/3D/Fleurs/Fleurs Feu/Plante Feu B/Plante feu B F.fbx" id="12_tfj3f"]
 
 [node name="JudyTestAssets" type="Node3D"]
 
@@ -45,4 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7103415, 0, -8.806224)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.701183, 0, -6.8699923)
 
 [node name="Fleur feu A F" parent="." instance=ExtResource("11_wplx7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.23884, 0, -4.9478183)
+transform = Transform3D(0.045676775, 0, 0.99895626, 0, 1, 0, -0.99895626, 0, 0.045676775, -11.296891, 0, -4.9346046)
+
+[node name="Plante feu B F" parent="." instance=ExtResource("12_tfj3f")]
+transform = Transform3D(-0.012007739, 0, -0.99992794, 0, 1, 0, 0.99992794, 0, -0.012007739, -11.817122, 0, -7.488326)
