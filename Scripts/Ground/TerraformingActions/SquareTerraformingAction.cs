@@ -13,13 +13,13 @@ public partial class SquareTerraformingAction : TerraformingAction
     {
         if (_wantedGroundType is null)
         {
-            GD.PrintErr("[SquareTerraformingAction] wanted ground type is null. Can't apply terraforming");
+            GardenLogger.LogError(this, "[SquareTerraformingAction] wanted ground type is null. Can't apply terraforming");
             return;
         }
 
         if (_squareOffset <= 0)
         {
-            GD.PrintErr("[SquareTerraformingAction] square offset is negative or zero. Can't apply terraforming.");
+            GardenLogger.LogError(this, "[SquareTerraformingAction] square offset is negative or zero. Can't apply terraforming.");
             return;
         }
         

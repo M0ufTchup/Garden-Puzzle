@@ -36,6 +36,7 @@ config/icon="uid://dic5kktfs2e1e"
 GameInstanceAutoload="*res://Scenes/GameInstanceScene.tscn"
 MenuGlobals="res://Scripts/UI/Menus/Menu_Globals.gd"
 SaveLoad="*res://Scripts/UI/Menus/SaveLoad.gd"
+GlobalGardenLogger="*res://Scripts/GardenLogger.cs"
 
 [display]
 

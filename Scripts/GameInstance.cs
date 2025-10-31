@@ -19,7 +19,7 @@ public partial class GameInstance : Node
         base._EnterTree();
         if (Instance is not null && Instance != this)
         {
-            GD.PrintErr("Cannot have multiple game instances");
+            GardenLogger.LogError(this, "Cannot have multiple game instances");
             QueueFree();
             return;
         }

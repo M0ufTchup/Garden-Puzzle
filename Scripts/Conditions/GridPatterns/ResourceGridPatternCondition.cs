@@ -14,7 +14,7 @@ public abstract partial class ResourceGridPatternCondition<T> : GridCondition wh
     {
         if (sourceGridRect.Size.X > ResourceArray2D.Count || sourceGridRect.Size.Y > ResourceArray2D[0]?.Count)
         {
-            GD.PrintErr($"[{GetType().Name}]: given sourceGridRect is too large for the configured condition (given grid rect: {sourceGridRect}, configured {{xSize={ResourceArray2D.Count}, ySize={ResourceArray2D[0]?.Count}}})");
+            GardenLogger.LogError(this,$"[{GetType().Name}]: given sourceGridRect is too large for the configured condition (given grid rect: {sourceGridRect}, configured {{xSize={ResourceArray2D.Count}, ySize={ResourceArray2D[0]?.Count}}})");
             return false;
         }
         

@@ -38,7 +38,7 @@ public partial class LevelModel : Resource
         
         int oldMoney = Money;
         Money = newMoney;
-        GD.Print($"[Money] {oldMoney}->{Money} (offset: {newMoney - oldMoney})");
+        GardenLogger.Log(this, $"Money changed: {oldMoney}->{Money} (offset: {newMoney - oldMoney})");
         MoneyChanged?.Invoke();
     }
 }

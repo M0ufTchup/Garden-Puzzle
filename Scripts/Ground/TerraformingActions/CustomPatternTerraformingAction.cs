@@ -13,7 +13,7 @@ public partial class CustomPatternTerraformingAction : TerraformingAction
     {
         if (gridRectSource.Size.X + 2 > _patternResourceGroundTypeArray2D.Count || gridRectSource.Size.Y + 2 > _patternResourceGroundTypeArray2D[0]?.Count)
         {
-            GD.PrintErr($"[TERRAFORMING ACTION]: given gridRectSource is too large for the configured action (given grid rect: {gridRectSource}, configured {{xSize={_patternResourceGroundTypeArray2D.Count}, ySize={_patternResourceGroundTypeArray2D[0]?.Count}}})");
+            GardenLogger.LogError(this, $"given gridRectSource is too large for the configured action (given grid rect: {gridRectSource}, configured {{xSize={_patternResourceGroundTypeArray2D.Count}, ySize={_patternResourceGroundTypeArray2D[0]?.Count}}})");
             return;
         }
         

@@ -19,7 +19,7 @@ public partial class PlantManager : Node3D
         
         if (Instance is not null && Instance != this)
         {
-            GD.PrintErr("Cannot have multiple instances of PlantManager");
+            GardenLogger.LogError(this, "Cannot have multiple instances of PlantManager");
             QueueFree();
             return;
         }

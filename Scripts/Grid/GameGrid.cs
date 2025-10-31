@@ -35,18 +35,18 @@ public partial class GameGrid : GridMap, IGrid
 		foreach (Vector3I usedCellPosition in GetUsedCells())
 		{
 			string usedCellItemName = MeshLibrary.GetItemName(GetCellItem(usedCellPosition));
-			// GD.Print($"[GameGrid] Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
+			GardenLogger.Log(this, $"Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
 			if (_config.TryGetMeshDefinition(usedCellItemName, out GroundMeshDefinition groundMeshDefinition))
 			{
 				Vector2I simplifiedCellPosition = new Vector2I(usedCellPosition.X, usedCellPosition.Z);
 				_cells[simplifiedCellPosition] = new Cell(simplifiedCellPosition, groundMeshDefinition.GroundType);
 				SetCellItem(usedCellPosition, groundMeshDefinition.MeshLibraryId);
 				
-				// GD.Print($"[GameGrid] GridMap cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
+				GardenLogger.Log(this, $"Cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
 			}
 		}
 
-		GD.Print($"[GameGrid] GridMap initialized with {_cells.Count} cells.");
+		GardenLogger.Log(this, $"GridMap initialized with {_cells.Count} cells.");
 	}
 
 	public ICell GetReadOnlyCell(Vector2I position) => GetCell(position);
@@ -79,7 +79,7 @@ public partial class GameGrid : GridMap, IGrid
 			SetCellItem(mapPosition, groundMeshDefinition.MeshLibraryId);
 		}
 		
-        GD.Print($"[GridMap] CellGround changed at '{cell.Position}' to '{newGroundType?.Name ?? "null"}'");
+        GardenLogger.Log(this, $"CellGround changed at '{cell.Position}' to '{newGroundType?.Name ?? "null"}'");
 		CellGroundChanged?.Invoke(new IGrid.GroundChangeArgs(internalCell, oldGroundType, newGroundType));
 	}
 
@@ -91,7 +91,7 @@ public partial class GameGrid : GridMap, IGrid
 		Plant oldPlant = internalCell.Plant;
 		internalCell.SetPlant(newPlant);
 		
-		// GD.Print($"[GameGrid] Cell at {cell.Position} has new plant '{newPlant?.Data.Name ?? "null"}'");
+		GardenLogger.Log(this, $"Cell at {cell.Position} has new plant '{newPlant?.Data.Name ?? "null"}'");
 		CellPlantChanged?.Invoke(new IGrid.PlantChangeArgs(internalCell, oldPlant, newPlant));
 	}
 }

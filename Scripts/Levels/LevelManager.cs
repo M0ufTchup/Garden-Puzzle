@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using GardenPuzzle.Grid;
 using GardenPuzzle.Plants;
@@ -32,7 +31,7 @@ public partial class LevelManager : Node3D
     {
         if (levelData is null)
         {
-            GD.PrintErr("LevelData is null");
+            GardenLogger.LogError(this, "LevelData is null");
             return;
         }
         
@@ -58,7 +57,7 @@ public partial class LevelManager : Node3D
         
         if (_levelModel is null)
         {
-            GD.PrintErr("LevelModel is null");
+            GardenLogger.LogError(this, "LevelModel is null");
             return;
         }
 
@@ -90,7 +89,7 @@ public partial class LevelManager : Node3D
                 ICell cell = Grid.GetCell(collisionPosition);
                 if (cell is not null)
                 {
-                    GD.Print($"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
+                    GardenLogger.Log(this, $"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
                     TryPlanting(cell);
                 }
             }
@@ -123,7 +122,7 @@ public partial class LevelManager : Node3D
                 }
                 
                 PlantManager.Instance.KillPlant(cellPlant);
-                GD.Print($"Removed plant '{cellPlant.Data.Name}'");
+                GardenLogger.Log(this, $"Removed plant '{cellPlant.Data.Name}'");
             }
             else
             {
@@ -169,7 +168,7 @@ public partial class LevelManager : Node3D
             for (int j = 0; j < spawnedPlant.GridRect.Size.Y; j++)
                 Grid.SetCellPlant(spawnedPlant.GridRect.Position + new Vector2I(i, j), spawnedPlant);
         
-        GD.Print($"Planted '{_levelModel.SelectedPlantData.Name}' at {{{plantGridRect}}}");
+        GardenLogger.Log(this, $"Planted '{_levelModel.SelectedPlantData.Name}' at {{{plantGridRect}}}");
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);
         OnPlantation(spawnedPlant);
     }
