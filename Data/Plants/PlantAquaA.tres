@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://c2pknvh4g3jye"]
+
+[ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="1_b5cde"]
+[ext_resource type="Resource" uid="uid://bvkupoy8au7pf" path="res://Data/PlantFamilies/PlantFamily_Aquatic.tres" id="2_18c5t"]
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="3_b5cde"]
+[ext_resource type="Script" uid="uid://dqo5k0iqygf4r" path="res://Scripts/Ground/TerraformingActions/SquareTerraformingAction.cs" id="4_18c5t"]
+[ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="8_qdmyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gcvs"]
+albedo_color = Color(0, 0.37273005, 0.94539374, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wg7h5"]
+material = SubResource("StandardMaterial3D_6gcvs")
+top_radius = 1.0
+bottom_radius = 1.8
+height = 1.0
+
+[sub_resource type="Resource" id="Resource_5a5e1"]
+script = ExtResource("4_18c5t")
+_squareOffset = 5
+_wantedGroundType = ExtResource("3_b5cde")
+metadata/_custom_type_script = "uid://dqo5k0iqygf4r"
+
+[resource]
+script = ExtResource("8_qdmyu")
+Name = "Plant Aqua A"
+Mesh = SubResource("CylinderMesh_wg7h5")
+Family = ExtResource("2_18c5t")
+Cost = 10
+Size = Vector2i(4, 4)
+AllowedGroundTypes = Array[Object]([ExtResource("1_b5cde")])
+KillGroundTypes = null
+TerraformingAction = SubResource("Resource_5a5e1")
+metadata/_custom_type_script = "uid://vypd1ab6ntie"
