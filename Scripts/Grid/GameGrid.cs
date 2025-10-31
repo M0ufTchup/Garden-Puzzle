@@ -63,6 +63,12 @@ public partial class GameGrid : GridMap, IGrid
 		return ToGlobal(MapToLocal(mapPosition));
 	}
 
+	public void SetCellsGroundType(Rect2I rect, GroundType newGroundType)
+	{
+		for (int i = 0; i < rect.Size.X; i++)
+			for (int j = 0; j < rect.Size.Y; j++)
+				SetCellGroundType(rect.Position + new Vector2I(i, j), newGroundType);
+	}
 	public void SetCellGroundType(Vector2I cellPosition, GroundType newGroundType) => SetCellGroundType(GetCell(cellPosition), newGroundType);
 	public void SetCellGroundType(ICell cell, GroundType newGroundType)
 	{
@@ -83,6 +89,12 @@ public partial class GameGrid : GridMap, IGrid
 		CellGroundChanged?.Invoke(new IGrid.GroundChangeArgs(internalCell, oldGroundType, newGroundType));
 	}
 
+	public void SetCellsPlant(Rect2I rect, Plant newPlant)
+	{
+		for (int i = 0; i < rect.Size.X; i++)
+			for (int j = 0; j < rect.Size.Y; j++)
+				SetCellPlant(rect.Position + new Vector2I(i, j), newPlant);
+	}
 	public void SetCellPlant(Vector2I cellPosition, Plant newPlant) => SetCellPlant(GetCell(cellPosition), newPlant);
 	public void SetCellPlant(ICell cell, Plant newPlant)
 	{

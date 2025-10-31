@@ -18,8 +18,11 @@ public interface IGrid : IReadOnlyGrid
 
     Vector3 GetCellWorldPosition(ICell cell);
     
+    void SetCellsGroundType(Rect2I rect, GroundType newGroundType);
     void SetCellGroundType(Vector2I cellPosition, GroundType newGroundType);
     void SetCellGroundType(ICell cell, GroundType newGroundType);
+    
+    void SetCellsPlant(Rect2I rect, Plant newPlant);
     void SetCellPlant(Vector2I cellPosition, Plant newPlant);
     void SetCellPlant(ICell cell, Plant newPlant);
 }

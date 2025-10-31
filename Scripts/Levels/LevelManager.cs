@@ -113,14 +113,7 @@ public partial class LevelManager : Node3D
             // kill plant if on "kill ground"
             if (cellPlant.Data.KillGroundTypes?.Contains(args.NewGround) ?? false)
             {
-                for (int i = 0; i < cellPlant.GridRect.Size.X; i++)
-                {
-                    for (int j = 0; j < cellPlant.GridRect.Size.Y; j++)
-                    {
-                        Grid.SetCellPlant(cellPlant.GridRect.Position + new Vector2I(i, j), null);
-                    }
-                }
-                
+                Grid.SetCellsPlant(cellPlant.GridRect, null);
                 PlantManager.Instance.KillPlant(cellPlant);
                 GardenLogger.Log(this, $"Removed plant '{cellPlant.Data.Name}'");
             }
@@ -164,9 +157,7 @@ public partial class LevelManager : Node3D
         
         Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, centeredPlantWorldPos);
         spawnedPlant.SetGridRect(plantGridRect);
-        for (int i = 0; i < spawnedPlant.GridRect.Size.X; i++)
-            for (int j = 0; j < spawnedPlant.GridRect.Size.Y; j++)
-                Grid.SetCellPlant(spawnedPlant.GridRect.Position + new Vector2I(i, j), spawnedPlant);
+        Grid.SetCellsPlant(spawnedPlant.GridRect, spawnedPlant);
         
         GardenLogger.Log(this, $"Planted '{_levelModel.SelectedPlantData.Name}' at {{{plantGridRect}}}");
         _levelModel.SetMoney(_levelModel.Money - _levelModel.SelectedPlantData.Cost);

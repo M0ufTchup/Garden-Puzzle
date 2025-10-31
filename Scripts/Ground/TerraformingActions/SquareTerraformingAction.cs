@@ -24,12 +24,6 @@ public partial class SquareTerraformingAction : TerraformingAction
         }
         
         Rect2I targetRect = new Rect2I(gridRectSource.Position - Vector2I.One * _squareOffset, gridRectSource.Size + Vector2I.One * _squareOffset * 2);
-        for (int i = 0; i < targetRect.Size.X; i++)
-        {
-            for (int j = 0; j < targetRect.Size.Y; j++)
-            {
-                grid.SetCellGroundType(targetRect.Position + new Vector2I(i, j), _wantedGroundType);
-            }
-        }
+        grid.SetCellsGroundType(targetRect, _wantedGroundType);
     }
 }
