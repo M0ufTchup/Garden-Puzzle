@@ -16,9 +16,8 @@ public partial class CustomPatternTerraformingAction : TerraformingAction
             GD.PrintErr($"[TERRAFORMING ACTION]: given gridRectSource is too large for the configured action (given grid rect: {gridRectSource}, configured {{xSize={_patternResourceGroundTypeArray2D.Count}, ySize={_patternResourceGroundTypeArray2D[0]?.Count}}})");
             return;
         }
-
-        Vector2I array2DSize = new Vector2I(_patternResourceGroundTypeArray2D.Count, _patternResourceGroundTypeArray2D[0].Count);
-        Rect2I customRect = new Rect2I(gridRectSource.Position - ((array2DSize - gridRectSource.Size) / 2), array2DSize);
+        
+        Rect2I customRect = Utilities.GetCustomRect(gridRectSource, _patternResourceGroundTypeArray2D);
         for (int i = 0; i < customRect.Size.X; i++)
         {
             for (int j = 0; j < customRect.Size.Y; j++)
