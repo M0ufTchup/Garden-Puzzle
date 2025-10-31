@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://bauey1uy3cbe3"]
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://bauey1uy3cbe3"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_ubhaq"]
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_1o122"]
