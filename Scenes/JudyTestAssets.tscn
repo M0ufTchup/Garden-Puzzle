@@ -1,3 +1,40 @@
-[gd_scene format=3 uid="uid://b0se0wgk3iqxh"]
+[gd_scene load_steps=10 format=3 uid="uid://b0se0wgk3iqxh"]
+
+[ext_resource type="PackedScene" uid="uid://bem86afntnqv5" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante D/Plante Aqua D 3X1 F.fbx" id="1_ktah3"]
+[ext_resource type="PackedScene" uid="uid://b8pfkslqb1y26" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante C/Plante Aqua C 2x2 F.fbx" id="2_6dxg6"]
+[ext_resource type="PackedScene" uid="uid://744w6gn1mri7" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante B/Plante Aqua B 1X1 F.fbx" id="3_4i6j7"]
+[ext_resource type="PackedScene" uid="uid://npbmxur3s8y1" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante A/Plante Aqua A 4x4 F.fbx" id="4_suiwa"]
+[ext_resource type="PackedScene" uid="uid://b4kb00lcpiuyu" path="res://Assets/3D/Fleurs/Fleurs base/Plante A/Plante base A F.fbx" id="5_vglpx"]
+[ext_resource type="PackedScene" uid="uid://bc0wl1rvbvqvm" path="res://Assets/3D/Fleurs/Fleurs base/Plante B/Plante base B F.fbx" id="6_8nw1p"]
+[ext_resource type="PackedScene" uid="uid://dni6g33l613o4" path="res://Assets/3D/Fleurs/Fleurs base/Plante C/Modé Plante Base C F.fbx" id="7_wplx7"]
+[ext_resource type="PackedScene" uid="uid://b1v36ao5w538d" path="res://Assets/3D/Fleurs/Fleurs base/Plante D/Plante Base D F.fbx" id="8_tfj3f"]
+[ext_resource type="PackedScene" uid="uid://cpbtnsoot6vfr" path="res://Assets/3D/Fleurs/Fleurs base/Plante E/Plante base E F.fbx" id="9_dvift"]
 
 [node name="JudyTestAssets" type="Node3D"]
+
+[node name="Plante Aqua D 3X1 F" parent="." instance=ExtResource("1_ktah3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.943099, 0, 0.5294175)
+
+[node name="Plante Aqua C 2x2 F" parent="." instance=ExtResource("2_6dxg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7358305, 0, 0.43769145)
+
+[node name="Plante Aqua B 1X1 F" parent="." instance=ExtResource("3_4i6j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4383984, 0, -2.0929425)
+
+[node name="Plante Aqua A 4x4 F" parent="." instance=ExtResource("4_suiwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1349106, 0, 0.015259743)
+
+[node name="Plante base A F" parent="." instance=ExtResource("5_vglpx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09972501, 0, -3.2800336)
+
+[node name="Plante base B F" parent="." instance=ExtResource("6_8nw1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.877713, 0, -5.093176)
+
+[node name="Modé Plante Base C F" parent="." instance=ExtResource("7_wplx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78510517, 0, -6.0139027)
+
+[node name="Plante Base D F" parent="." instance=ExtResource("8_tfj3f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.9709435, 0, -8.446802)
+
+[node name="Plante base E F" parent="." instance=ExtResource("9_dvift")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7103415, 0, -8.806224)
