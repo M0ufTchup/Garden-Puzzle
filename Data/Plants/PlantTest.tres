@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=11 format=3 uid="uid://ce70no283ew5h"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://ce70no283ew5h"]
 
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="1_22lxk"]
+[ext_resource type="Resource" uid="uid://bjuaumyagbac0" path="res://Data/MoneyGain/MoneyGain_HumidFloor.tres" id="1_atvmp"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_j2cy0"]
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="2_sy8cq"]
 [ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="3_jv4x2"]
@@ -25,4 +26,5 @@ Mesh = SubResource("CylinderMesh_atvmp")
 Family = ExtResource("3_sy8cq")
 AllowedGroundTypes = Array[Object]([ExtResource("1_22lxk"), ExtResource("3_jv4x2"), ExtResource("3_vo6oc"), ExtResource("4_atvmp"), ExtResource("5_htsx6"), ExtResource("2_sy8cq")])
 KillGroundTypes = null
+AdditionalMoneyGains = Array[Object]([ExtResource("1_atvmp")])
 metadata/_custom_type_script = "uid://vypd1ab6ntie"

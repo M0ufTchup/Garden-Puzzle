@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConditionalMoneyGain" load_steps=5 format=3 uid="uid://bjuaumyagbac0"]
+
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_cuatv"]
+[ext_resource type="Script" uid="uid://d3o7k7qlpk3ks" path="res://Scripts/Conditions/GroundTypeGridCondition.cs" id="2_k4p34"]
+[ext_resource type="Script" uid="uid://cxnyiqfvke37e" path="res://Scripts/MoneyGains/ConditionalMoneyGain.cs" id="3_xhmin"]
+
+[sub_resource type="Resource" id="Resource_txmmf"]
+script = ExtResource("2_k4p34")
+_expectedGroundType = ExtResource("1_cuatv")
+metadata/_custom_type_script = "uid://d3o7k7qlpk3ks"
+
+[resource]
+script = ExtResource("3_xhmin")
+_conditions = Array[Object]([SubResource("Resource_txmmf")])
+_amount = 5.0
+metadata/_custom_type_script = "uid://cxnyiqfvke37e"

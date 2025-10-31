@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://bauey1uy3cbe3"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://bauey1uy3cbe3"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_ubhaq"]
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_1o122"]
@@ -28,8 +28,9 @@ script = ExtResource("8_8fme0")
 Name = "Plant Ashes A"
 Mesh = SubResource("CylinderMesh_1o122")
 Family = ExtResource("6_ubhaq")
-Cost = 10
 AllowedGroundTypes = Array[Object]([ExtResource("1_ubhaq"), ExtResource("2_1o122"), ExtResource("3_yumhw"), ExtResource("4_kxtxc"), ExtResource("6_i66pu")])
-KillGroundTypes = null
+KillGroundTypes = Array[Object]([ExtResource("1_ubhaq")])
 TerraformingAction = SubResource("Resource_1o122")
+Cost = 10
+AdditionalMoneyGains = null
 metadata/_custom_type_script = "uid://vypd1ab6ntie"

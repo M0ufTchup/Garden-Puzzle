@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GardenPuzzle.Grid;
 using GardenPuzzle.Plants;
 using Godot;
@@ -24,6 +25,8 @@ public partial class LevelManager : Node3D
     [ExportGroup("Debug")]
     [Export] private LevelData _debugLevelData; // if not null, will launch this LevelData automatically
     private LevelData LevelData => _levelModel.LevelData;
+
+    private int _lowestPlantPrice = 0;
     
     public void Init(LevelData levelData)
     {
@@ -39,32 +42,14 @@ public partial class LevelManager : Node3D
 
         Grid = levelInstance;
         Grid.CellGroundChanged += OnCellGroundChanged;
+        Grid.CellPlantChanged += OnCellPlantChanged;
         _levelModel.Reset(levelData, Grid);
+
+        _lowestPlantPrice = LevelData.AllowedPlants.Min(plant => plant.Cost);
+        _levelModel.MoneyChanged += OnMoneyChanged;
         
         LevelStarted?.Invoke(LevelData);
         _levelModel.LevelStarted?.Invoke(LevelData);
-    }
-
-    private void OnCellGroundChanged(ICell cell)
-    {
-        Plant cellPlant = cell.Plant;
-        if (cellPlant is not null)
-        {
-            // kill plant if on "kill ground"
-            if (cellPlant.Data.KillGroundTypes?.Contains(cell.GroundType) ?? false)
-            {
-                for (int i = 0; i < cellPlant.GridRect.Size.X; i++)
-                {
-                    for (int j = 0; j < cellPlant.GridRect.Size.Y; j++)
-                    {
-                        Grid.SetCellPlant(cellPlant.GridRect.Position + new Vector2I(i, j), null);
-                    }
-                }
-                
-                PlantManager.Instance.KillPlant(cellPlant);
-                GD.Print($"Removed plant '{cellPlant.Data.Name}'");
-            }
-        }
     }
 
     public override void _EnterTree()
@@ -112,6 +97,47 @@ public partial class LevelManager : Node3D
         }
     }
 
+    private void OnCellPlantChanged(IGrid.PlantChangeArgs args)
+    {
+        if (args.OldPlant != null)
+        {
+            _levelModel.SetMoney(_levelModel.Money - args.OldPlant.GainedMoney);
+            args.OldPlant.ClearGainedMoney(); // set the gained money to 0 so we do not remove the gained money of the same plant twice
+        }
+    }
+
+    private void OnCellGroundChanged(IGrid.GroundChangeArgs args)
+    {
+        Plant cellPlant = args.Cell.Plant;
+        if (cellPlant is not null)
+        {
+            // kill plant if on "kill ground"
+            if (cellPlant.Data.KillGroundTypes?.Contains(args.NewGround) ?? false)
+            {
+                for (int i = 0; i < cellPlant.GridRect.Size.X; i++)
+                {
+                    for (int j = 0; j < cellPlant.GridRect.Size.Y; j++)
+                    {
+                        Grid.SetCellPlant(cellPlant.GridRect.Position + new Vector2I(i, j), null);
+                    }
+                }
+                
+                PlantManager.Instance.KillPlant(cellPlant);
+                GD.Print($"Removed plant '{cellPlant.Data.Name}'");
+            }
+            else
+            {
+                UpdatePlantMoneyGained(cellPlant);
+            }
+        }
+    }
+    
+    private void OnMoneyChanged()
+    {
+        if(_levelModel.Money < _lowestPlantPrice)
+            EndLevel();
+    }
+    
     private void TryPlanting(ICell inputCell)
     {
         if (inputCell.Plant is not null)
@@ -151,13 +177,17 @@ public partial class LevelManager : Node3D
     private void OnPlantation(Plant plant)
     {
         plant.Data.TerraformingAction?.Apply(Grid, plant.GridRect);
+        UpdatePlantMoneyGained(plant);
+    }
 
-        _levelModel.SetMoney(_levelModel.Money + plant.Data.DefaultMoneyGain);
-        
-        if (_levelModel.Money <= 0)
-        {
-            EndLevel();
-        }
+    private void UpdatePlantMoneyGained(Plant plant)
+    {
+        int oldGainedMoney = plant.GainedMoney;
+        int newGainedMoney = plant.UpdateGainedMoney(Grid);
+        if (oldGainedMoney == newGainedMoney)
+            return;
+
+        _levelModel.SetMoney(_levelModel.Money + (newGainedMoney - oldGainedMoney));
     }
 
     private void EndLevel()

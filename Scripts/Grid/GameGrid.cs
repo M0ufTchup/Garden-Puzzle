@@ -9,8 +9,8 @@ namespace GardenPuzzle.Grid;
 [GlobalClass]
 public partial class GameGrid : GridMap, IGrid
 {
-	public event Action<ICell> CellPlantChanged;
-	public event Action<ICell> CellGroundChanged;
+	public event Action<IGrid.PlantChangeArgs> CellPlantChanged;
+	public event Action<IGrid.GroundChangeArgs> CellGroundChanged;
 	
 	[Export] private GameGridConfig _config;
 
@@ -63,32 +63,35 @@ public partial class GameGrid : GridMap, IGrid
 		return ToGlobal(MapToLocal(mapPosition));
 	}
 
-	public void SetCellGroundType(Vector2I cellPosition, GroundType groundType) => SetCellGroundType(GetCell(cellPosition), groundType);
-	public void SetCellGroundType(ICell cell, GroundType groundType)
+	public void SetCellGroundType(Vector2I cellPosition, GroundType newGroundType) => SetCellGroundType(GetCell(cellPosition), newGroundType);
+	public void SetCellGroundType(ICell cell, GroundType newGroundType)
 	{
 		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
-		if (!internalCell.GroundType.AllowTransformation(groundType))
+		if (!internalCell.GroundType.AllowTransformation(newGroundType))
 			return;
-		internalCell.SetGroundType(groundType);
+		GroundType oldGroundType = internalCell.GroundType;
+		internalCell.SetGroundType(newGroundType);
 
-		if (_config.TryGetMeshDefinition(groundType, out GroundMeshDefinition groundMeshDefinition))
+		if (_config.TryGetMeshDefinition(newGroundType, out GroundMeshDefinition groundMeshDefinition))
 		{
 			Vector3I mapPosition = new Vector3I(internalCell.Position.X, 0, internalCell.Position.Y);
 			SetCellItem(mapPosition, groundMeshDefinition.MeshLibraryId);
 		}
 		
-        GD.Print($"[GridMap] CellGround changed at '{cell.Position}' to '{groundType?.Name ?? "null"}'");
-		CellGroundChanged?.Invoke(internalCell);
+        GD.Print($"[GridMap] CellGround changed at '{cell.Position}' to '{newGroundType?.Name ?? "null"}'");
+		CellGroundChanged?.Invoke(new IGrid.GroundChangeArgs(internalCell, oldGroundType, newGroundType));
 	}
 
-	public void SetCellPlant(Vector2I cellPosition, Plant plant) => SetCellPlant(GetCell(cellPosition), plant);
-	public void SetCellPlant(ICell cell, Plant plant)
+	public void SetCellPlant(Vector2I cellPosition, Plant newPlant) => SetCellPlant(GetCell(cellPosition), newPlant);
+	public void SetCellPlant(ICell cell, Plant newPlant)
 	{
 		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
-		internalCell.SetPlant(plant);
-		GD.Print($"[GameGrid] Cell at {cell.Position} has new plant '{plant?.Data.Name ?? "null"}'");
-		CellPlantChanged?.Invoke(internalCell);
+		Plant oldPlant = internalCell.Plant;
+		internalCell.SetPlant(newPlant);
+		
+		// GD.Print($"[GameGrid] Cell at {cell.Position} has new plant '{newPlant?.Data.Name ?? "null"}'");
+		CellPlantChanged?.Invoke(new IGrid.PlantChangeArgs(internalCell, oldPlant, newPlant));
 	}
 }

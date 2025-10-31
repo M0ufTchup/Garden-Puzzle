@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=27 format=3 uid="uid://8sfofy3ip4jc"]
+[gd_resource type="Resource" script_class="GameGridConfig" load_steps=27 format=3 uid="uid://8sfofy3ip4jc"]
 
 [ext_resource type="Script" uid="uid://cnqjqstvsy303" path="res://Scripts/Grid/Config/GroundMeshDefinition.cs" id="1_njj1l"]
 [ext_resource type="Script" uid="uid://clbnidmrticdc" path="res://Scripts/Grid/Config/GameGridConfig.cs" id="2_bw5ad"]
@@ -89,5 +89,5 @@ metadata/_custom_type_script = "uid://cnqjqstvsy303"
 
 [resource]
 script = ExtResource("2_bw5ad")
-_groundMeshDefinitions = [SubResource("Resource_ikajl"), SubResource("Resource_7o2gr"), SubResource("Resource_kva1l"), SubResource("Resource_wb314"), SubResource("Resource_ht7te"), SubResource("Resource_jhpav")]
+_groundMeshDefinitions = Array[ExtResource("1_njj1l")]([SubResource("Resource_ikajl"), SubResource("Resource_7o2gr"), SubResource("Resource_kva1l"), SubResource("Resource_wb314"), SubResource("Resource_ht7te"), SubResource("Resource_jhpav")])
 metadata/_custom_type_script = "uid://clbnidmrticdc"

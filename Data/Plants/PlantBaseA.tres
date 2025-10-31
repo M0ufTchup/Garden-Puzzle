@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://c3hovene2de3k"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=13 format=3 uid="uid://c3hovene2de3k"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_6gcvs"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_gu74x"]
+[ext_resource type="Resource" uid="uid://bjuaumyagbac0" path="res://Data/MoneyGain/MoneyGain_HumidFloor.tres" id="1_wg7h5"]
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="2_wg7h5"]
 [ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="3_t5t7l"]
 [ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="4_u0a37"]
@@ -28,8 +29,9 @@ script = ExtResource("1_gu74x")
 Name = "Plant Base A"
 Mesh = SubResource("CylinderMesh_wg7h5")
 Family = ExtResource("6_55jl0")
-Cost = 5
 AllowedGroundTypes = Array[Object]([ExtResource("1_6gcvs"), ExtResource("2_wg7h5"), ExtResource("3_t5t7l"), ExtResource("4_u0a37")])
 KillGroundTypes = Array[Object]([ExtResource("5_r2x55")])
 TerraformingAction = SubResource("Resource_wg7h5")
+Cost = 5
+AdditionalMoneyGains = Array[Object]([ExtResource("1_wg7h5")])
 metadata/_custom_type_script = "uid://vypd1ab6ntie"

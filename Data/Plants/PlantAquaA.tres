@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://c2pknvh4g3jye"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=9 format=3 uid="uid://c2pknvh4g3jye"]
 
 [ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="1_b5cde"]
 [ext_resource type="Resource" uid="uid://bvkupoy8au7pf" path="res://Data/PlantFamilies/PlantFamily_Aquatic.tres" id="2_18c5t"]
@@ -26,9 +26,10 @@ script = ExtResource("8_qdmyu")
 Name = "Plant Aqua A"
 Mesh = SubResource("CylinderMesh_wg7h5")
 Family = ExtResource("2_18c5t")
-Cost = 10
 Size = Vector2i(4, 4)
 AllowedGroundTypes = Array[Object]([ExtResource("1_b5cde")])
 KillGroundTypes = null
 TerraformingAction = SubResource("Resource_5a5e1")
+Cost = 10
+AdditionalMoneyGains = null
 metadata/_custom_type_script = "uid://vypd1ab6ntie"

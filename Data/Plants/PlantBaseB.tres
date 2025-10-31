@@ -1,11 +1,25 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://bm142tm7mscvy"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=14 format=3 uid="uid://bm142tm7mscvy"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_i5i45"]
+[ext_resource type="Script" uid="uid://cmh475spvitq7" path="res://Scripts/CountOf/CountOfPlantFamily.cs" id="2_477rt"]
 [ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="3_bduy6"]
+[ext_resource type="Script" uid="uid://bpuk08yggoeon" path="res://Scripts/MoneyGains/IncrementalMoneyGain.cs" id="3_fdixq"]
+[ext_resource type="Resource" uid="uid://bjuaumyagbac0" path="res://Data/MoneyGain/MoneyGain_HumidFloor.tres" id="4_bduy6"]
 [ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="4_fdixq"]
 [ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="5_qu5sv"]
 [ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="6_0n0ws"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="7_4frng"]
+
+[sub_resource type="Resource" id="Resource_qu5sv"]
+script = ExtResource("2_477rt")
+_expectedPlantFamilies = Array[Object]([ExtResource("6_0n0ws")])
+metadata/_custom_type_script = "uid://cmh475spvitq7"
+
+[sub_resource type="Resource" id="Resource_0n0ws"]
+script = ExtResource("3_fdixq")
+_countOf = SubResource("Resource_qu5sv")
+_amount = 2.0
+metadata/_custom_type_script = "uid://bpuk08yggoeon"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvbt3"]
 albedo_color = Color(0.2509804, 0.47058824, 0.039215688, 1)
@@ -20,9 +34,10 @@ script = ExtResource("7_4frng")
 Name = "Plant Base B"
 Mesh = SubResource("CylinderMesh_i5i45")
 Family = ExtResource("6_0n0ws")
-Cost = 2
 Size = Vector2i(2, 2)
 AllowedGroundTypes = Array[Object]([ExtResource("1_i5i45"), ExtResource("3_bduy6"), ExtResource("4_fdixq")])
 KillGroundTypes = Array[Object]([ExtResource("5_qu5sv")])
+Cost = 2
 DefaultMoneyGain = 5
+AdditionalMoneyGains = Array[Object]([SubResource("Resource_0n0ws"), ExtResource("4_bduy6")])
 metadata/_custom_type_script = "uid://vypd1ab6ntie"
