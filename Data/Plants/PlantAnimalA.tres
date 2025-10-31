@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=14 format=3 uid="uid://c6wqg5sm3cwsj"]
+
+[ext_resource type="Resource" uid="uid://b5so6nt1k34m4" path="res://Data/PlantFamilies/PlantFamily_Animal.tres" id="1_1btcx"]
+[ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_6h5wj"]
+[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="1_wiwu1"]
+[ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="2_0qj2d"]
+[ext_resource type="Script" uid="uid://d3o7k7qlpk3ks" path="res://Scripts/Conditions/GroundTypeGridCondition.cs" id="2_00u4v"]
+[ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="3_sysrm"]
+[ext_resource type="Script" uid="uid://cuhfd6k1j7gjf" path="res://Scripts/Conditions/PlantFamilyCountGridCondition.cs" id="4_qjkns"]
+[ext_resource type="Script" uid="uid://cxnyiqfvke37e" path="res://Scripts/MoneyGains/ConditionalMoneyGain.cs" id="5_h10ef"]
+
+[sub_resource type="Resource" id="Resource_rfewy"]
+script = ExtResource("2_00u4v")
+_expectedGroundType = ExtResource("2_0qj2d")
+metadata/_custom_type_script = "uid://d3o7k7qlpk3ks"
+
+[sub_resource type="Resource" id="Resource_r3n24"]
+script = ExtResource("4_qjkns")
+_expectedValidPlantCount = 4
+_expectedPlantFamilies = Array[Object]([ExtResource("3_sysrm")])
+metadata/_custom_type_script = "uid://cuhfd6k1j7gjf"
+
+[sub_resource type="Resource" id="Resource_62ajw"]
+script = ExtResource("5_h10ef")
+_conditions = Array[Object]([SubResource("Resource_rfewy"), SubResource("Resource_r3n24")])
+_amount = 100.0
+metadata/_custom_type_script = "uid://cxnyiqfvke37e"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7kgw"]
+albedo_color = Color(1, 0.4862745, 0.14901961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wiwu1"]
+material = SubResource("StandardMaterial3D_f7kgw")
+top_radius = 1.0
+bottom_radius = 1.9
+height = 1.0
+
+[resource]
+script = ExtResource("1_6h5wj")
+Name = "Plant Animal A"
+Mesh = SubResource("CylinderMesh_wiwu1")
+Family = ExtResource("1_1btcx")
+Size = Vector2i(4, 4)
+AllowedGroundTypes = Array[Object]([ExtResource("1_wiwu1"), ExtResource("2_0qj2d")])
+KillGroundTypes = Array[Object]([])
+Cost = 25
+AdditionalMoneyGains = Array[Object]([SubResource("Resource_62ajw")])
+metadata/_custom_type_script = "uid://vypd1ab6ntie"
