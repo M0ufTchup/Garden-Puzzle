@@ -19,7 +19,7 @@ public partial class PlantFamilyCountGridCondition : GridCondition
             return true;
         
         Rect2I expandedGridRect = Utilities.ExpandRect(sourceGridRect, _range);
-        IReadOnlyDictionary<Resource, int> plantCount = grid.GetPlantCount(expandedGridRect);
+        IReadOnlyDictionary<Resource, int> plantCount = grid.GetPlantCount(expandedGridRect, sourceGridRect);
 
         int totalCount = 0;
         foreach (PlantFamily expectedPlantFamily in _expectedPlantFamilies)

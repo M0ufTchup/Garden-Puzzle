@@ -15,7 +15,7 @@ public partial class IncrementalMoneyGain : MoneyGain
 
         int iteration = _countOf.ComputeCount(grid, sourceGridRect);
         for (int i = 0; i < iteration; i++)
-            moneyGained = IncrementMoneyGained(i);
+            moneyGained = IncrementMoneyGained(moneyGained);
         
         return moneyGained;
     }

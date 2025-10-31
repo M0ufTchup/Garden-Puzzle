@@ -18,7 +18,7 @@ public partial class CountOfPlantFamily : CountOf
             return 0;
         
         Rect2I expandedRect = Utilities.ExpandRect(gridRect, _range);
-        IReadOnlyDictionary<Resource, int> plantCounts = grid.GetPlantCount(expandedRect);
+        IReadOnlyDictionary<Resource, int> plantCounts = grid.GetPlantCount(expandedRect, gridRect);
 
         int totalCount = 0;
         foreach (PlantFamily expectedPlantFamily in _expectedPlantFamilies)
