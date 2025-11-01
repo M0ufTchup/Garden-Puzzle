@@ -11,10 +11,15 @@ public partial class GameGrid : GridMap, IGrid
 {
 	public event Action<IGrid.PlantChangeArgs> CellPlantChanged;
 	public event Action<IGrid.GroundChangeArgs> CellGroundChanged;
-	
+	public IEnumerable<IGridPartition> ReadOnlyGridPartitions => _partitions.Values;
+
 	[Export] private GameGridConfig _config;
 
 	private readonly Dictionary<Vector2I, Cell> _cells = new();
+	private readonly Dictionary<Vector2I, GridPartition> _partitions = new();
+
+	private Vector2I _minCellPosition = Vector2I.MaxValue;
+	private Vector2I _maxCellPosition = Vector2I.MinValue;
 	
 	public override void _Ready()
 	{
@@ -31,22 +36,62 @@ public partial class GameGrid : GridMap, IGrid
 			MeshLibrary.SetItemMeshTransform(newMeshLibraryItemId, MeshLibrary.GetItemMeshTransform(0));
 			groundMeshDefinition.MeshLibraryId = newMeshLibraryItemId;
 		}
-		
+
 		foreach (Vector3I usedCellPosition in GetUsedCells())
 		{
 			string usedCellItemName = MeshLibrary.GetItemName(GetCellItem(usedCellPosition));
-			GardenLogger.Log(this, $"Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
+			// GardenLogger.Log(this, $"Cell at {usedCellPosition} uses '{usedCellItemName ?? "null"}'");
 			if (_config.TryGetMeshDefinition(usedCellItemName, out GroundMeshDefinition groundMeshDefinition))
 			{
 				Vector2I simplifiedCellPosition = new Vector2I(usedCellPosition.X, usedCellPosition.Z);
 				_cells[simplifiedCellPosition] = new Cell(simplifiedCellPosition, groundMeshDefinition.GroundType);
+				if (simplifiedCellPosition < _minCellPosition) _minCellPosition = simplifiedCellPosition;
+				if (simplifiedCellPosition > _maxCellPosition) _maxCellPosition = simplifiedCellPosition;
+				
 				SetCellItem(usedCellPosition, groundMeshDefinition.MeshLibraryId);
 				
-				GardenLogger.Log(this, $"Cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
+				// GardenLogger.Log(this, $"Cell at {usedCellPosition} registered as '{groundMeshDefinition.GroundType.Name}' at {simplifiedCellPosition}'");
 			}
 		}
 
 		GardenLogger.Log(this, $"GridMap initialized with {_cells.Count} cells.");
+	}
+
+	public void InitPartitions(LevelGridConfig levelGridConfig)
+	{
+		// Create the partitions
+		Rect2I fullGridRect = new Rect2I(_minCellPosition, _maxCellPosition - _minCellPosition);
+		Vector2I partitionSize = new Vector2I(fullGridRect.Size.X / levelGridConfig.GetPartitionGridXSize(), fullGridRect.Size.Y / levelGridConfig.GetPartitionGridYSize());
+		for (int i = 0; i < levelGridConfig.GetPartitionGridXSize(); i++)
+		{
+			for (int j = 0; j < levelGridConfig.GetPartitionGridYSize(); j++)
+			{
+				Vector2I partitionPosition = new Vector2I(i, j);
+				GridPartition gridPartition = new GridPartition(partitionPosition, new Rect2I(fullGridRect.Position + new Vector2I(partitionSize.X * i, partitionSize.Y * j), partitionSize), levelGridConfig.PartitionsCostIntArray2D[i][j]);
+				_partitions.Add(partitionPosition, gridPartition);
+			}
+		}
+		
+		// Unlock the cells of the wanted partitions
+		if (_partitions.TryGetValue(levelGridConfig.UnlockedPartitionPosition, out var unlockedPartition))
+		{
+			int plantableCellCount = 0;
+			unlockedPartition.Locked = false;
+			for (int i = 0; i < unlockedPartition.GridRect.Size.X; i++)
+			{
+				for (int j = 0; j < unlockedPartition.GridRect.Size.Y; j++)
+				{
+					var cell = _cells.GetValueOrDefault(unlockedPartition.GridRect.Position + new Vector2I(i, j));
+					if (cell != null)
+					{
+						cell.AllowPlanting = true;
+						plantableCellCount++;
+					}
+				}
+			}
+			GardenLogger.Log(this, $"Plantable cells count = {plantableCellCount}");
+		}
+		else GardenLogger.LogError(this, "Unlocked partition position is not valid and not found in the available partitions");
 	}
 
 	public ICell GetReadOnlyCell(Vector2I position) => GetCell(position);
@@ -77,7 +122,7 @@ public partial class GameGrid : GridMap, IGrid
 		if (!internalCell.GroundType.AllowTransformation(newGroundType))
 			return;
 		GroundType oldGroundType = internalCell.GroundType;
-		internalCell.SetGroundType(newGroundType);
+		internalCell.GroundType = newGroundType;
 
 		if (_config.TryGetMeshDefinition(newGroundType, out GroundMeshDefinition groundMeshDefinition))
 		{
@@ -98,12 +143,18 @@ public partial class GameGrid : GridMap, IGrid
 	public void SetCellPlant(Vector2I cellPosition, Plant newPlant) => SetCellPlant(GetCell(cellPosition), newPlant);
 	public void SetCellPlant(ICell cell, Plant newPlant)
 	{
-		if (cell is null || !_cells.TryGetValue(cell.Position, out Cell internalCell))
+		if (cell is null || !cell.AllowPlanting || !_cells.TryGetValue(cell.Position, out Cell internalCell))
 			return;
 		Plant oldPlant = internalCell.Plant;
-		internalCell.SetPlant(newPlant);
+		internalCell.Plant = newPlant;
 		
 		GardenLogger.Log(this, $"Cell at {cell.Position} has new plant '{newPlant?.Data.Name ?? "null"}'");
 		CellPlantChanged?.Invoke(new IGrid.PlantChangeArgs(internalCell, oldPlant, newPlant));
+	}
+	
+	public IGridPartition GetReadOnlyGridPartition(Vector2I gridPartitionPosition)
+	{
+		_partitions.TryGetValue(gridPartitionPosition, out var gridPartition);
+		return gridPartition;
 	}
 }

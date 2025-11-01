@@ -37,6 +37,7 @@ public partial class LevelManager : Node3D
         
         GameGrid levelInstance = levelData.LevelScene.Instantiate<GameGrid>();
         _levelParent.AddChild(levelInstance);
+        levelInstance.InitPartitions(levelData.GridConfig);
         levelInstance.Position = Vector3.Zero;
 
         Grid = levelInstance;
@@ -132,7 +133,7 @@ public partial class LevelManager : Node3D
     
     private void TryPlanting(ICell inputCell)
     {
-        if (inputCell.Plant is not null)
+        if (!inputCell.AllowPlanting || inputCell.Plant is not null)
             return;
         if (_levelModel.SelectedPlantData is null)
             return;
