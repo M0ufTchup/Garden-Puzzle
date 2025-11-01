@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu3cl3jyex4oi"
-path.s3tc="res://.godot/imported/Fleur feu A F_1.png-989ffe7f04f314213faf73bdb5830acc.s3tc.ctex"
+path.s3tc="res://.godot/imported/Fleur feu A F_1.png-d2576902b88bc4e2871c4b7a247cc7dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/3D/Fleurs/Fleurs Feu/plante A/Fleur feu A F_1.png"
-dest_files=["res://.godot/imported/Fleur feu A F_1.png-989ffe7f04f314213faf73bdb5830acc.s3tc.ctex"]
+source_file="res://Assets/3D/Fleurs/Fleurs Feu/plante A/FBX/Fleur feu A F_1.png"
+dest_files=["res://.godot/imported/Fleur feu A F_1.png-d2576902b88bc4e2871c4b7a247cc7dc.s3tc.ctex"]
 
 [params]
 

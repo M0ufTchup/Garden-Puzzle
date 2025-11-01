@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0se0wgk3iqxh"]
+[gd_scene load_steps=18 format=3 uid="uid://b0se0wgk3iqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bem86afntnqv5" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante D/Plante Aqua D 3X1 F.fbx" id="1_ktah3"]
 [ext_resource type="PackedScene" uid="uid://b8pfkslqb1y26" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante C/Plante Aqua C 2x2 F.fbx" id="2_6dxg6"]
@@ -10,8 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://b1v36ao5w538d" path="res://Assets/3D/Fleurs/Fleurs base/Plante D/Plante Base D F.fbx" id="8_tfj3f"]
 [ext_resource type="PackedScene" uid="uid://cpbtnsoot6vfr" path="res://Assets/3D/Fleurs/Fleurs base/Plante E/Plante base E F.fbx" id="9_dvift"]
 [ext_resource type="PackedScene" uid="uid://b5q821u55gt5n" path="res://Assets/3D/Fleurs/Fleurs base/Plante F/Plante base F 3x3 F.fbx" id="10_8nw1p"]
-[ext_resource type="PackedScene" uid="uid://2wrakxt0dpsh" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/Fleur feu A F.fbx" id="11_wplx7"]
+[ext_resource type="PackedScene" uid="uid://2wrakxt0dpsh" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/FBX/Fleur feu A F.fbx" id="11_wplx7"]
 [ext_resource type="PackedScene" uid="uid://cy4ttatsfcc73" path="res://Assets/3D/Fleurs/Fleurs Feu/Plante Feu B/Plante feu B F.fbx" id="12_tfj3f"]
+[ext_resource type="Texture2D" uid="uid://6x3s8s20vw0q" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/FBX/Fleur feu A F_0.png" id="13_la113"]
+[ext_resource type="Texture2D" uid="uid://cu3cl3jyex4oi" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/FBX/Fleur feu A F_1.png" id="14_s5dkr"]
+[ext_resource type="ArrayMesh" uid="uid://bb0oh8o111lql" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/OBJ/Fleur Feu A.obj" id="15_s5dkr"]
+[ext_resource type="PackedScene" uid="uid://cjwjmpusj7an" path="res://Assets/3D/Fleurs/Fleurs Feu/plante A/GLTF_GLTB/Fleur_feu_A.glb" id="16_gm24e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppq22"]
+albedo_texture = ExtResource("13_la113")
+emission_enabled = true
+emission_texture = ExtResource("14_s5dkr")
 
 [node name="JudyTestAssets" type="Node3D"]
 
@@ -50,3 +59,14 @@ transform = Transform3D(0.045676775, 0, 0.99895626, 0, 1, 0, -0.99895626, 0, 0.0
 
 [node name="Plante feu B F" parent="." instance=ExtResource("12_tfj3f")]
 transform = Transform3D(-0.012007739, 0, -0.99992794, 0, 1, 0, 0.99992794, 0, -0.012007739, -11.817122, 0, -7.488326)
+
+[node name="FleurFeuA" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.070069075, 0, -11.64648)
+material_override = SubResource("StandardMaterial3D_ppq22")
+mesh = ExtResource("15_s5dkr")
+
+[node name="Fleur_feu_A" parent="." instance=ExtResource("16_gm24e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6068454, 0, -11.670162)
+
+[node name="Fleur feu A F2" parent="." instance=ExtResource("11_wplx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6464176, 0, -11.686582)

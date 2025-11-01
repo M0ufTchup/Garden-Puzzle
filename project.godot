@@ -51,6 +51,10 @@ project/assembly_name="GardenPuzzle"
 
 enabled=PackedStringArray("res://addons/array_2d_export/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={
