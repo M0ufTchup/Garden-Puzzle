@@ -60,7 +60,7 @@ public partial class GameGrid : GridMap, IGrid
 	public void InitPartitions(LevelGridConfig levelGridConfig)
 	{
 		// Create the partitions
-		Rect2I fullGridRect = new Rect2I(_minCellPosition, _maxCellPosition - _minCellPosition);
+		Rect2I fullGridRect = new Rect2I(_minCellPosition, _maxCellPosition - _minCellPosition + Vector2I.One);
 		Vector2I partitionSize = new Vector2I(fullGridRect.Size.X / levelGridConfig.GetPartitionGridXSize(), fullGridRect.Size.Y / levelGridConfig.GetPartitionGridYSize());
 		for (int i = 0; i < levelGridConfig.GetPartitionGridXSize(); i++)
 		{
