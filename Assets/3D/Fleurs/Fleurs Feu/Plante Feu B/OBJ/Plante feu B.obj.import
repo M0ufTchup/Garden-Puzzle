@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://chxn2t6guevdv"
+path="res://.godot/imported/Plante feu B.obj-b6a062b9625f00e3e7457e28e3b24ff7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Plante feu B.obj-b6a062b9625f00e3e7457e28e3b24ff7.mesh"]
+
+source_file="res://Assets/3D/Fleurs/Fleurs Feu/Plante Feu B/OBJ/Plante feu B.obj"
+dest_files=["res://.godot/imported/Plante feu B.obj-b6a062b9625f00e3e7457e28e3b24ff7.mesh", "res://.godot/imported/Plante feu B.obj-b6a062b9625f00e3e7457e28e3b24ff7.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
