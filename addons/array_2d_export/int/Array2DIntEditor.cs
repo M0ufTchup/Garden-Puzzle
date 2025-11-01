@@ -9,23 +9,31 @@ public partial class Array2DIntEditor : EditorProperty
 {
     private static readonly StringName SceneName = "res://addons/array_2d_export/int/array_2d_int.tscn";
 
-    private SpinBox _gridSizeSpinBox;
+    private SpinBox _xGridSizeSpinBox;
+    private SpinBox _yGridSizeSpinBox;
     private Array2DIntGrid _grid;
     private Button _resetBtn;
 
     private Array<Array<int>> _currentValue;
-    private int _currentSize;
+    private int _xCurrentSize;
+    private int _yCurrentSize;
 
     public override void _Ready()
     {
         _currentValue = GetPropertyValue();
-        _currentSize = _currentValue.Count;
+        if (_currentValue.Count == 0) _currentValue = Utils.Default2DArray<int>();
+        _xCurrentSize = _currentValue.Count;
+        _yCurrentSize = _currentValue[0].Count;
         
         var scene = ResourceLoader.Load<PackedScene>(SceneName).Instantiate<VBoxContainer>();
         
-        _gridSizeSpinBox = scene.GetNode<SpinBox>("GridSizeContainer/GridSizeSpinBox");
-        _gridSizeSpinBox.Value = _currentValue.Count;
-        _gridSizeSpinBox.ValueChanged += OnGridSizeChanged;
+        _xGridSizeSpinBox = scene.GetNode<SpinBox>("GridSizeContainer/XGridSizeSpinBox");
+        _xGridSizeSpinBox.Value = _xCurrentSize;
+        _xGridSizeSpinBox.ValueChanged += OnXGridSizeChanged;
+        
+        _yGridSizeSpinBox = scene.GetNode<SpinBox>("GridSizeContainer/YGridSizeSpinBox");
+        _yGridSizeSpinBox.Value = _yCurrentSize;
+        _yGridSizeSpinBox.ValueChanged += OnYGridSizeChanged;
 
         _grid = scene.GetNode<Array2DIntGrid>("Array2DGrid");
         _grid.Columns = _currentValue.Count;
@@ -46,8 +54,9 @@ public partial class Array2DIntEditor : EditorProperty
         _currentValue = GetPropertyValue();
         if (_currentValue.Count < 1)
         {
-            _currentValue = Utils.Default2DArray();
-            _gridSizeSpinBox.Value = Utils.DefaultArraySize;
+            _currentValue = Utils.Default2DArray<int>();
+            _xGridSizeSpinBox.Value = Utils.DefaultArraySize;
+            _yGridSizeSpinBox.Value = Utils.DefaultArraySize;
         }
         _grid.UpdateGrid(_currentValue);
     }
@@ -57,15 +66,21 @@ public partial class Array2DIntEditor : EditorProperty
         return GetEditedObject().Get(GetEditedProperty()).AsGodotArray<Array<int>>();
     }
 
-    private void OnGridSizeChanged(double value)
+    private void OnXGridSizeChanged(double value)
     {
-        int newSize = (int)value;
-        if (newSize % 2 == 0)
-        {
-            _currentSize = newSize > _currentSize ? newSize + 1 : newSize - 1;
-            _gridSizeSpinBox.Value = _currentSize;
-        }
-        _currentValue = Utils.Default2DArray(_currentSize);
+        int newXSize = (int)value;
+        _xGridSizeSpinBox.Value = newXSize;
+        _xCurrentSize = newXSize;
+        _currentValue = Utils.Default2DArray<int>(_xCurrentSize, _yCurrentSize);
+        EmitChanged(GetEditedProperty(), _currentValue);
+    }
+    
+    private void OnYGridSizeChanged(double value)
+    {
+        int newYSize = (int)value;
+        _yGridSizeSpinBox.Value = newYSize;
+        _yCurrentSize = newYSize;
+        _currentValue = Utils.Default2DArray<int>(_xCurrentSize, _yCurrentSize);
         EmitChanged(GetEditedProperty(), _currentValue);
     }
 
@@ -77,7 +92,7 @@ public partial class Array2DIntEditor : EditorProperty
 
     private void OnResetPressed()
     {
-        _currentValue = Utils.Default2DArray((int)_gridSizeSpinBox.Value);
+        _currentValue = Utils.Default2DArray<int>((int)_xGridSizeSpinBox.Value, (int)_yGridSizeSpinBox.Value);
         EmitChanged(GetEditedProperty(), _currentValue);
     }
 }
