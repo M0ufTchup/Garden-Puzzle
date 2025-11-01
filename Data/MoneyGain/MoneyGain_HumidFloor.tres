@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ConditionalMoneyGain" load_steps=5 format=3 uid="uid://bjuaumyagbac0"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bjuaumyagbac0"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_cuatv"]
 [ext_resource type="Script" uid="uid://d3o7k7qlpk3ks" path="res://Scripts/Conditions/GroundTypeGridCondition.cs" id="2_k4p34"]

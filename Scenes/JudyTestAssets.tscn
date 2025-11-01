@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://b0se0wgk3iqxh"]
+[gd_scene load_steps=2 format=3 uid="uid://b0se0wgk3iqxh"]
+
+[ext_resource type="PackedScene" uid="uid://3ejdcr5oskws" path="res://Assets/3D/Fleurs/Fleurs Feu/Plante C/FBX/Plante feu C 2X2 F.fbx" id="1_l6lo5"]
 
 [node name="JudyTestAssets" type="Node3D"]
+
+[node name="Plante feu C 2X2 F" parent="." instance=ExtResource("1_l6lo5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17182684, 0, -2.176547)

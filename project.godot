@@ -49,7 +49,7 @@ project/assembly_name="GardenPuzzle"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/array_2d_export/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [filesystem]
 

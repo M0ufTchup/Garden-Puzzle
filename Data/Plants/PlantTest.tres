@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://ce70no283ew5h"]
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://ce70no283ew5h"]
 
 [ext_resource type="Resource" uid="uid://bpoiy3apenowg" path="res://Data/Grounds/Ground_Dry.tres" id="1_22lxk"]
 [ext_resource type="Resource" uid="uid://bjuaumyagbac0" path="res://Data/MoneyGain/MoneyGain_HumidFloor.tres" id="1_atvmp"]
