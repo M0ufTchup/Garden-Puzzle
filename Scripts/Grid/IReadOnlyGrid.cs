@@ -5,8 +5,10 @@ namespace GardenPuzzle.Grid;
 
 public interface IReadOnlyGrid
 {
-    ICell GetReadOnlyCell(Vector2I position);
+    ICell GetCell(Vector2I position);
+    Vector3 GetCellWorldPosition(ICell cell);
     
-    IGridPartition GetReadOnlyGridPartition(Vector2I gridPartitionPosition);
     IEnumerable<IGridPartition> ReadOnlyGridPartitions { get; }
+    IGridPartition GetReadOnlyGridPartition(Vector2I gridPartitionPosition);
+    Rect2 GetGridPartitionWorldRect(IGridPartition gridPartition);
 }

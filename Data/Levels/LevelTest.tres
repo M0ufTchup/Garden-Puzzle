@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://jvda5vo0wtxa"
 [resource]
 script = ExtResource("3_255av")
 Name = "Test Level"
+StartMoney = 500
 LevelScene = ExtResource("1_t8xbx")
 AllowedPlants = Array[Object]([ExtResource("1_ic47u"), ExtResource("2_701qr"), ExtResource("3_kljdg"), ExtResource("4_kljdg"), ExtResource("5_fehag"), ExtResource("6_f3qce")])
 GridConfig = SubResource("Resource_m0eql")

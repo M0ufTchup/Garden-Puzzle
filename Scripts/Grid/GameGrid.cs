@@ -72,29 +72,11 @@ public partial class GameGrid : GridMap, IGrid
 			}
 		}
 		
-		// Unlock the cells of the wanted partitions
-		if (_partitions.TryGetValue(levelGridConfig.UnlockedPartitionPosition, out var unlockedPartition))
-		{
-			int plantableCellCount = 0;
-			unlockedPartition.Locked = false;
-			for (int i = 0; i < unlockedPartition.GridRect.Size.X; i++)
-			{
-				for (int j = 0; j < unlockedPartition.GridRect.Size.Y; j++)
-				{
-					var cell = _cells.GetValueOrDefault(unlockedPartition.GridRect.Position + new Vector2I(i, j));
-					if (cell != null)
-					{
-						cell.AllowPlanting = true;
-						plantableCellCount++;
-					}
-				}
-			}
-			GardenLogger.Log(this, $"Plantable cells count = {plantableCellCount}");
-		}
+		// unlock wanted partition
+		if (_partitions.TryGetValue(levelGridConfig.UnlockedPartitionPosition, out var unlockedPartition)) TryUnlockGridPartition(unlockedPartition);
 		else GardenLogger.LogError(this, "Unlocked partition position is not valid and not found in the available partitions");
 	}
 
-	public ICell GetReadOnlyCell(Vector2I position) => GetCell(position);
 	public ICell GetCell(Vector2I position) => _cells.GetValueOrDefault(position);
 	public ICell GetCell(Vector3 worldPosition)
 	{
@@ -151,10 +133,44 @@ public partial class GameGrid : GridMap, IGrid
 		GardenLogger.Log(this, $"Cell at {cell.Position} has new plant '{newPlant?.Data.Name ?? "null"}'");
 		CellPlantChanged?.Invoke(new IGrid.PlantChangeArgs(internalCell, oldPlant, newPlant));
 	}
-	
+
+	public bool TryUnlockGridPartition(IGridPartition gridPartition)
+	{
+		if (gridPartition is null || !gridPartition.Locked)
+			return false;
+		if (!_partitions.TryGetValue(gridPartition.PartitionPosition, out GridPartition internalGridPartition))
+			return false;
+		
+		int plantableCellCount = 0;
+		internalGridPartition.Locked = false;
+		for (int i = 0; i < internalGridPartition.GridRect.Size.X; i++)
+		{
+			for (int j = 0; j < internalGridPartition.GridRect.Size.Y; j++)
+			{
+				var cell = _cells.GetValueOrDefault(internalGridPartition.GridRect.Position + new Vector2I(i, j));
+				if (cell != null)
+				{
+					cell.AllowPlanting = true;
+					plantableCellCount++;
+				}
+			}
+		}
+		GardenLogger.Log(this, $"Unlocked grid partition at position {internalGridPartition.PartitionPosition} -> new plantable cells unlocked: {plantableCellCount}");
+		return true;
+	}
+
 	public IGridPartition GetReadOnlyGridPartition(Vector2I gridPartitionPosition)
 	{
 		_partitions.TryGetValue(gridPartitionPosition, out var gridPartition);
 		return gridPartition;
+	}
+
+	public Rect2 GetGridPartitionWorldRect(IGridPartition gridPartition)
+	{
+		Vector3 startCellWorldPosition = GetCellWorldPosition(GetCell(gridPartition.GridRect.Position));
+		return new Rect2(
+			new Vector2(startCellWorldPosition.X, startCellWorldPosition.Z) - Vector2.One * 0.5f,
+			gridPartition.GridRect.Size
+		);
 	}
 }

@@ -47,6 +47,7 @@ public partial class LevelManager : Node3D
 
         _lowestPlantPrice = LevelData.AllowedPlants.Min(plant => plant.Cost);
         _levelModel.MoneyChanged += OnMoneyChanged;
+        _levelModel.RequestGridPartitionUnlock += OnGridPartitionUnlockRequested;
         
         LevelStarted?.Invoke(LevelData);
         _levelModel.LevelStarted?.Invoke(LevelData);
@@ -84,16 +85,28 @@ public partial class LevelManager : Node3D
             query.CollideWithAreas = false;
 
             Dictionary result = GetWorld3D().GetDirectSpaceState().IntersectRay(query);
-            if (result.TryGetValue("collider", out var collider))
-            {
-                Vector3 collisionPosition = (Vector3)result["position"];
-                ICell cell = Grid.GetCell(collisionPosition);
-                if (cell is not null)
-                {
-                    GardenLogger.Log(this, $"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
-                    TryPlanting(cell);
-                }
-            }
+            TryInteract(result);
+        }
+    }
+
+    private void TryInteract(Dictionary result)
+    {
+        if (!result.TryGetValue("collider", out var collider)) 
+            return;
+        
+        if (collider.Obj is Node3D node3D && node3D.HasNode("Interactable") && node3D.GetNode<Interactable>("Interactable").TryInteract())
+        {
+            GardenLogger.Log(this, "Launched successful interactable callback");
+            return;
+        }
+                
+        Vector3 collisionPosition = (Vector3)result["position"];
+        ICell cell = Grid.GetCell(collisionPosition);
+        if (cell is not null)
+        {
+            GardenLogger.Log(this, $"Clicked on cell at {cell.Position} -> {cell?.GroundType.Name ?? "no ground"}");
+            TryPlanting(cell);
+            return;
         }
     }
 
@@ -187,5 +200,16 @@ public partial class LevelManager : Node3D
         _levelModel.Won = won;
         _levelModel.LevelEnded?.Invoke(LevelData);
         LevelEnded?.Invoke(LevelData);
+    }
+    
+    private void OnGridPartitionUnlockRequested(IGridPartition gridPartition)
+    {
+        if (!gridPartition.Locked || _levelModel.Money < gridPartition.Cost)
+            return;
+
+        if (Grid.TryUnlockGridPartition(gridPartition))
+        {
+            _levelModel.SetMoney(_levelModel.Money - gridPartition.Cost);
+        }
     }
 }

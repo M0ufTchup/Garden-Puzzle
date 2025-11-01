@@ -13,10 +13,7 @@ public interface IGrid : IReadOnlyGrid
     public event Action<PlantChangeArgs> CellPlantChanged;
     public event Action<GroundChangeArgs> CellGroundChanged;
     
-    ICell GetCell(Vector2I position);
     ICell GetCell(Vector3 worldPosition);
-
-    Vector3 GetCellWorldPosition(ICell cell);
     
     void SetCellsGroundType(Rect2I rect, GroundType newGroundType);
     void SetCellGroundType(Vector2I cellPosition, GroundType newGroundType);
@@ -25,4 +22,6 @@ public interface IGrid : IReadOnlyGrid
     void SetCellsPlant(Rect2I rect, Plant newPlant);
     void SetCellPlant(Vector2I cellPosition, Plant newPlant);
     void SetCellPlant(ICell cell, Plant newPlant);
+    
+    bool TryUnlockGridPartition(IGridPartition gridPartition);
 }

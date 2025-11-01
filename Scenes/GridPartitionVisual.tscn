@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://kpqxrh1p3e0d"]
+
+[ext_resource type="Script" uid="uid://nsho8x814esf" path="res://Scripts/Grid/World/GridPartitionVisual.cs" id="1_2jbec"]
+[ext_resource type="Script" uid="uid://bi8ypbfgjd2i1" path="res://Scripts/Interactable.cs" id="2_uxe03"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jbec"]
+size = Vector3(2.21875, 1, 1.4794922)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxe03"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.6627451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xpvf2"]
+material = SubResource("StandardMaterial3D_uxe03")
+size = Vector3(3, 1, 3)
+
+[node name="GridPartitionVisual" type="Node3D" node_paths=PackedStringArray("_interactable", "_label", "_fogMeshInstance")]
+script = ExtResource("1_2jbec")
+_interactable = NodePath("StaticBody3D/Interactable")
+_label = NodePath("StaticBody3D/Label3D")
+_fogMeshInstance = NodePath("MeshInstance3D")
+metadata/_custom_type_script = "uid://nsho8x814esf"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9475286, 0)
+
+[node name="Interactable" type="Node3D" parent="StaticBody3D"]
+script = ExtResource("2_uxe03")
+metadata/_custom_type_script = "uid://bi8ypbfgjd2i1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2jbec")
+
+[node name="Label3D" type="Label3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031960607, 0)
+pixel_size = 0.0075
+billboard = 1
+text = "Buy new zone
+[MONEY_AMOUNT]"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_xpvf2")

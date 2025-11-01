@@ -22,6 +22,8 @@ public partial class LevelModel : Resource
     public Action<LevelData> LevelStarted;
     public Action<LevelData> LevelEnded;
 
+    public Action<IGridPartition> RequestGridPartitionUnlock;
+
     public void Reset(LevelData levelData, IReadOnlyGrid grid)
     {
         LevelData = levelData;
