@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://2wrakxt0dpsh"
-path="res://.godot/imported/Fleur feu A F.fbx-736e0b1c5a2936e0662f98a38487696d.scn"
+uid="uid://cjwjmpusj7an"
+path="res://.godot/imported/Fleur_feu_A.glb-52a60f4320157ec5b00234fbc631fab4.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Fleurs/Fleurs Feu/plante A/Fleur feu A F.fbx"
-dest_files=["res://.godot/imported/Fleur feu A F.fbx-736e0b1c5a2936e0662f98a38487696d.scn"]
+source_file="res://Assets/3D/Fleurs/Fleurs Feu/plante A/GLTF_GLTB/Fleur_feu_A.glb"
+dest_files=["res://.godot/imported/Fleur_feu_A.glb-52a60f4320157ec5b00234fbc631fab4.scn"]
 
 [params]
 
@@ -30,7 +30,7 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
@@ -38,7 +38,5 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
-fbx/naming_version=2
+gltf/naming_version=2
+gltf/embedded_image_handling=1
