@@ -167,7 +167,8 @@ public partial class LevelManager : Node3D
 
         ICell startCell = Grid.GetCell(plantGridRect.Position);
         ICell endCell =  Grid.GetCell(plantGridRect.Position + plantGridRect.Size - Vector2I.One);
-        Vector3 centeredPlantWorldPos = (Grid.GetCellWorldPosition(startCell) + Grid.GetCellWorldPosition(endCell)) * 0.5f + Vector3.Up;
+        Vector3 centeredPlantWorldPos = (Grid.GetCellWorldPosition(startCell) + Grid.GetCellWorldPosition(endCell)) * 0.5f;
+        centeredPlantWorldPos.Y = 1;
         
         Plant spawnedPlant = PlantManager.Instance.SpawnPlant(_levelModel.SelectedPlantData, centeredPlantWorldPos);
         spawnedPlant.SetGridRect(plantGridRect);

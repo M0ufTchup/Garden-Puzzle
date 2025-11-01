@@ -5,6 +5,8 @@
 [node name="Plant" type="Node3D" node_paths=PackedStringArray("_meshInstance")]
 script = ExtResource("1_ovpbw")
 _meshInstance = NodePath("MeshInstance3D")
+_scaleFactor = 0.5
 metadata/_custom_type_script = "uid://m1adpkomeud4"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

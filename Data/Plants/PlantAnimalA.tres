@@ -38,9 +38,9 @@ height = 1.0
 [resource]
 script = ExtResource("1_6h5wj")
 Name = "Plant Animal A"
-Mesh = SubResource("CylinderMesh_wiwu1")
 Family = ExtResource("1_1btcx")
 Size = Vector2i(4, 4)
+Mesh = SubResource("CylinderMesh_wiwu1")
 AllowedGroundTypes = Array[Object]([ExtResource("1_wiwu1"), ExtResource("2_0qj2d")])
 KillGroundTypes = Array[Object]([])
 Cost = 25

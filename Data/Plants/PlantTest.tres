@@ -22,8 +22,8 @@ height = 1.0
 [resource]
 script = ExtResource("1_j2cy0")
 Name = "Test Plant"
-Mesh = SubResource("CylinderMesh_atvmp")
 Family = ExtResource("3_sy8cq")
+Mesh = SubResource("CylinderMesh_atvmp")
 AllowedGroundTypes = Array[Object]([ExtResource("1_22lxk"), ExtResource("3_jv4x2"), ExtResource("3_vo6oc"), ExtResource("4_atvmp"), ExtResource("5_htsx6"), ExtResource("2_sy8cq")])
 KillGroundTypes = null
 AdditionalMoneyGains = Array[Object]([ExtResource("1_atvmp")])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=13 format=3 uid="uid://c3hovene2de3k"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://c3hovene2de3k"]
 
 [ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="1_6gcvs"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_gu74x"]
@@ -9,15 +9,7 @@
 [ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="5_r2x55"]
 [ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="6_55jl0"]
 [ext_resource type="Script" uid="uid://dqymarqs31yys" path="res://Scripts/Ground/TerraformingActions/CustomPatternTerraformingAction.cs" id="7_6gcvs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gcvs"]
-albedo_color = Color(0, 0.9607843, 0.039215688, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_wg7h5"]
-material = SubResource("StandardMaterial3D_6gcvs")
-top_radius = 0.2
-bottom_radius = 0.4
-height = 1.0
+[ext_resource type="PackedScene" uid="uid://b1mvu87draj62" path="res://Assets/3D/Fleurs/Fleurs base/Plante A/GLTF_GLTB/Fleur Base A.glb" id="9_t5t7l"]
 
 [sub_resource type="Resource" id="Resource_wg7h5"]
 script = ExtResource("7_6gcvs")
@@ -27,8 +19,9 @@ metadata/_custom_type_script = "uid://dqymarqs31yys"
 [resource]
 script = ExtResource("1_gu74x")
 Name = "Plant Base A"
-Mesh = SubResource("CylinderMesh_wg7h5")
 Family = ExtResource("6_55jl0")
+VisualScene = ExtResource("9_t5t7l")
+_rotation = 3
 AllowedGroundTypes = Array[Object]([ExtResource("1_6gcvs"), ExtResource("2_wg7h5"), ExtResource("3_t5t7l"), ExtResource("4_u0a37")])
 KillGroundTypes = Array[Object]([ExtResource("5_r2x55")])
 TerraformingAction = SubResource("Resource_wg7h5")
