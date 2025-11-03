@@ -1,6 +1,11 @@
 shader_type spatial;
 
 uniform sampler2D texture;
+uniform vec3 Color: source_color;
+uniform float Metal;
+uniform float Rough;
+uniform sampler2D NormalMap;
+uniform float NormalScale= 1.0;
 uniform sampler2D NoiseDissolveTexture;
 uniform float DissolveAmount = 0.3;
 uniform vec3 DissolveEdgeColor : source_color;
@@ -53,8 +58,11 @@ vec3 EmissiveColor(vec2 uv)
 
 void fragment() 
 {
-	ALBEDO = texture(texture, UV).rgb;
+	ALBEDO = texture(texture, UV).rgb * Color;
+	METALLIC = Metal;
+	ROUGHNESS = Rough;
 	EMISSION = EmissiveColor(UV);
+	NORMAL_MAP = texture(NormalMap, UV).rgb * NormalScale;
 	ALPHA = texture(texture, UV).a * OpacityMask(UV);
 }
 

@@ -1,19 +1,25 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3f8o1xst7duy"]
+[gd_scene load_steps=18 format=3 uid="uid://c3f8o1xst7duy"]
 
-[ext_resource type="Shader" uid="uid://b7ox2oqwupe6d" path="res://NoiseDissolve.gdshader" id="1_4qc8s"]
+[ext_resource type="Shader" uid="uid://b7ox2oqwupe6d" path="res://MasterMaterial.gdshader" id="1_4qc8s"]
 [ext_resource type="Texture2D" uid="uid://beswrt5w8ud7w" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/LowResBlurredNoise.PNG" id="3_4raw5"]
 [ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="3_b05sg"]
 [ext_resource type="Script" uid="uid://cyigwahtj34vd" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/Despawn.gd" id="4_c0fg1"]
 [ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="4_x36gt"]
 [ext_resource type="Shader" uid="uid://ccdtb4mbst4vm" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/ParticleSprite.gdshader" id="6_tq01m"]
+[ext_resource type="PackedScene" uid="uid://c7hfbjieimoqt" path="res://Assets/3D/Fleurs/Fleurs base/Plante A/FBX/Plante base A F.fbx" id="7_6dea3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5lpa2"]
 render_priority = 0
 shader = ExtResource("1_4qc8s")
 shader_parameter/texture = ExtResource("4_x36gt")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Metal = 0.5
+shader_parameter/Rough = 0.25
+shader_parameter/NormalMap = ExtResource("3_b05sg")
+shader_parameter/NormalScale = 1.0
 shader_parameter/NoiseDissolveTexture = ExtResource("3_b05sg")
 shader_parameter/DissolveAmount = 0.0
-shader_parameter/DissolveEdgeColor = Color(0.8784314, 0, 0, 1)
+shader_parameter/DissolveEdgeColor = Color(1, 1, 0, 1)
 shader_parameter/NoiseMask = ExtResource("3_4raw5")
 
 [sub_resource type="BoxMesh" id="BoxMesh_c0fg1"]
@@ -83,3 +89,6 @@ lifetime = 2.0
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_4raw5")
 draw_pass_1 = SubResource("QuadMesh_w8273")
+
+[node name="Plante base A F" parent="." instance=ExtResource("7_6dea3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1395644, 0, 1.9423509)

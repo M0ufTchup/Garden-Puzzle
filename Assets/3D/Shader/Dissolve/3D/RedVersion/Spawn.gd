@@ -3,11 +3,14 @@ extends MeshInstance3D
 var testShader: bool = false
 @export var curve: Curve
 @export var loop : bool = false;
-@onready var particle: GPUParticles3D = $SpawnVFX
+@export var particle: GPUParticles3D
+@export var mat: Material;
 
 var time: float = 0.0
 var dir: int = 1
 
+func _ready():
+	mesh.surface_set_material(0, mat);
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		testShader = !testShader
@@ -19,6 +22,8 @@ func _process(delta):
 		var material: ShaderMaterial = mesh.surface_get_material(0)
 		material.set_shader_parameter('DissolveAmount', curve.sample(time));
 		particle.emitting = true;
+		
+
 		if time > 1: particle.emitting = false;
 		if loop:
 			if time > 1: dir = -1;
