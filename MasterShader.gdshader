@@ -5,7 +5,7 @@ uniform vec3 Color: source_color;
 uniform float Metal;
 uniform float Rough;
 uniform sampler2D NormalMap;
-uniform float NormalScale= 1.0;
+uniform float NormalScale= 0.0;
 uniform sampler2D NoiseDissolveTexture;
 uniform float DissolveAmount = 0.3;
 uniform vec3 DissolveEdgeColor : source_color;

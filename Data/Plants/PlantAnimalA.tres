@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=14 format=3 uid="uid://c6wqg5sm3cwsj"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=14 format=3 uid="uid://c6wqg5sm3cwsj"]
 
 [ext_resource type="Resource" uid="uid://b5so6nt1k34m4" path="res://Data/PlantFamilies/PlantFamily_Animal.tres" id="1_1btcx"]
 [ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="1_6h5wj"]

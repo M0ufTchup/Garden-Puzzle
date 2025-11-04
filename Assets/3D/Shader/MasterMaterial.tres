@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dakke5iuwxmq2"]
+
+[ext_resource type="Shader" uid="uid://b7ox2oqwupe6d" path="res://MasterShader.gdshader" id="1_k77ir"]
+[ext_resource type="Texture2D" uid="uid://bxe8u30tbke0k" path="res://Assets/3D/Shader/Dissolve/PerlinNoise.png" id="2_fva0k"]
+[ext_resource type="Texture2D" uid="uid://beswrt5w8ud7w" path="res://Assets/3D/Shader/Dissolve/3D/RedVersion/LowResBlurredNoise.PNG" id="3_8xpk2"]
+[ext_resource type="Texture2D" uid="uid://dic5kktfs2e1e" path="res://plant_icon.svg" id="4_fva0k"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_k77ir")
+shader_parameter/texture = ExtResource("4_fva0k")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Metal = 0.0
+shader_parameter/Rough = 0.0
+shader_parameter/NormalScale = 0.0
+shader_parameter/NoiseDissolveTexture = ExtResource("2_fva0k")
+shader_parameter/DissolveAmount = 1.0
+shader_parameter/DissolveEdgeColor = Color(1, 1, 0, 1)
+shader_parameter/NoiseMask = ExtResource("3_8xpk2")
