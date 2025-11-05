@@ -44,9 +44,7 @@ shader = ExtResource("6_d2dea")
 material = SubResource("ShaderMaterial_vefhe")
 
 [node name="SpawnVFX" type="GPUParticles3D"]
-emitting = false
 amount = 200
-one_shot = true
 process_material = SubResource("ParticleProcessMaterial_4raw5")
 draw_pass_1 = SubResource("QuadMesh_w8273")
 
