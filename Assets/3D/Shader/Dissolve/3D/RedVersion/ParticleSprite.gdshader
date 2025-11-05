@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode cull_disabled, diffuse_toon;
 
 float circle(in vec2 uv, in float radius, in float hardness)
 {
