@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=8 format=3 uid="uid://y2bv6geusi5"]
+
+[ext_resource type="Resource" uid="uid://kpqdwptm8p4y" path="res://Data/Grounds/Ground_Water.tres" id="1_ltefl"]
+[ext_resource type="Resource" uid="uid://bvkupoy8au7pf" path="res://Data/PlantFamilies/PlantFamily_Aquatic.tres" id="2_5ykjn"]
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="3_8kypl"]
+[ext_resource type="Script" uid="uid://dqo5k0iqygf4r" path="res://Scripts/Ground/TerraformingActions/SquareTerraformingAction.cs" id="4_jka2v"]
+[ext_resource type="PackedScene" uid="uid://u5kmv3pr1jnq" path="res://Assets/3D/Fleurs/Fleurs Aquatique/Plante B/FBX/Plante Aqua B 1X1 F.fbx" id="5_ltefl"]
+[ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="6_ykyps"]
+
+[sub_resource type="Resource" id="Resource_5a5e1"]
+script = ExtResource("4_jka2v")
+_squareOffset = 5
+_wantedGroundType = ExtResource("3_8kypl")
+metadata/_custom_type_script = "uid://dqo5k0iqygf4r"
+
+[resource]
+script = ExtResource("6_ykyps")
+Name = "Plant Aqua B"
+Family = ExtResource("2_5ykjn")
+VisualScene = ExtResource("5_ltefl")
+_rotation = 1
+AllowedGroundTypes = Array[Object]([ExtResource("1_ltefl")])
+KillGroundTypes = null
+TerraformingAction = SubResource("Resource_5a5e1")
+Cost = 10
+DefaultMoneyGain = 5
+AdditionalMoneyGains = null
+metadata/_custom_type_script = "uid://vypd1ab6ntie"

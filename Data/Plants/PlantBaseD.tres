@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=13 format=3 uid="uid://cegfyscdbc5j3"]
+
+[ext_resource type="Resource" uid="uid://bm504651cpnj2" path="res://Data/PlantFamilies/PlantFamily_Base.tres" id="1_1u0tn"]
+[ext_resource type="Script" uid="uid://cmh475spvitq7" path="res://Scripts/CountOf/CountOfPlantFamily.cs" id="2_dymqu"]
+[ext_resource type="Script" uid="uid://bpuk08yggoeon" path="res://Scripts/MoneyGains/IncrementalMoneyGain.cs" id="3_lnaja"]
+[ext_resource type="Resource" uid="uid://bjuaumyagbac0" path="res://Data/MoneyGain/MoneyGain_HumidFloor.tres" id="4_e8no5"]
+[ext_resource type="Resource" uid="uid://cetmm7w81exbo" path="res://Data/Grounds/Ground_Humid.tres" id="5_kl3co"]
+[ext_resource type="Resource" uid="uid://bct773gepgrc1" path="res://Data/Grounds/Ground_Grass.tres" id="6_imov8"]
+[ext_resource type="Resource" uid="uid://coudnlxqyv5ya" path="res://Data/Grounds/Ground_Multi.tres" id="7_wx8de"]
+[ext_resource type="Resource" uid="uid://cxnaobbottnr0" path="res://Data/Grounds/Ground_Ashes.tres" id="8_55xva"]
+[ext_resource type="PackedScene" uid="uid://dni6g33l613o4" path="res://Assets/3D/Fleurs/Fleurs base/Plante C/FBX/Modé Plante Base C F.fbx" id="9_5roa6"]
+[ext_resource type="Script" uid="uid://vypd1ab6ntie" path="res://Scripts/Plants/PlantData.cs" id="10_0cs3f"]
+
+[sub_resource type="Resource" id="Resource_qu5sv"]
+script = ExtResource("2_dymqu")
+_expectedPlantFamilies = Array[Object]([ExtResource("1_1u0tn")])
+metadata/_custom_type_script = "uid://cmh475spvitq7"
+
+[sub_resource type="Resource" id="Resource_0n0ws"]
+script = ExtResource("3_lnaja")
+_countOf = SubResource("Resource_qu5sv")
+_amount = 2.0
+metadata/_custom_type_script = "uid://bpuk08yggoeon"
+
+[resource]
+script = ExtResource("10_0cs3f")
+Name = "Plant Base B"
+Family = ExtResource("1_1u0tn")
+Size = Vector2i(2, 2)
+VisualScene = ExtResource("9_5roa6")
+_rotation = 1
+AllowedGroundTypes = Array[Object]([ExtResource("5_kl3co"), ExtResource("6_imov8"), ExtResource("7_wx8de")])
+KillGroundTypes = Array[Object]([ExtResource("8_55xva")])
+Cost = 2
+DefaultMoneyGain = 5
+AdditionalMoneyGains = Array[Object]([SubResource("Resource_0n0ws"), ExtResource("4_e8no5")])
+metadata/_custom_type_script = "uid://vypd1ab6ntie"
